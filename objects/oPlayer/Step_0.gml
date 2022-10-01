@@ -1,0 +1,82 @@
+/// @desc
+enableLive;
+
+//Input
+var _gpLeft = false;
+var _gpRight = false;
+var _gpJump = false;
+for(var i = 0; i < gamepad_get_device_count(); i++) {
+	if(gamepad_button_check(i,gp_padl) or gamepad_axis_value(i,gp_axislh) <= -0.5) _gpLeft = true;
+	if(gamepad_button_check(i,gp_padr) or gamepad_axis_value(i,gp_axislh) >= 0.5) _gpRight = true;
+	for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gpJump = true;
+}
+
+if(_gpLeft or _gpRight or _gpJump) global.usingGamepad = true;
+
+var _keyLeft,_keyRight, _keyJump;
+if(player == 0) or (player == 2 and global.usingGamepad) {
+	_keyLeft = keyboard_check(vk_left) or keyboard_check(ord("A")) or (_gpLeft and player == 0);
+	_keyRight = keyboard_check(vk_right) or keyboard_check(ord("D")) or (_gpRight and player == 0);
+	_keyJump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or (_gpJump and player == 0);	
+} else if(global.usingGamepad) { 
+	_keyLeft = _gpLeft;
+	_keyRight = _gpRight;
+	_keyJump = _gpJump;
+} else if(player == 1) {
+	_keyLeft = keyboard_check(ord("A"));
+	_keyRight = keyboard_check(ord("D"));
+	_keyJump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W"));
+} else {
+	_keyLeft = keyboard_check(vk_left);	
+	_keyRight = keyboard_check(vk_right);
+	_keyJump = keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up);
+}
+
+
+// Movement
+hsp = Approach(hsp,0,0.3);
+hsp = median(-maxwalk,maxwalk,hsp+(_keyRight - _keyLeft)*walkspd);
+vsp += grv;
+
+if(_keyJump) jumpTimer = 10;
+
+if((canJump-- > 0) && jumpTimer > 0) {
+	vsp = jumpspd;
+	canJump = 0;
+	jumpTimer = 0;
+}
+
+jumpTimer--;
+
+// Moving Platform
+if platform != noone and platform.bbox_bottom < room_height and platform.bbox_top > INFO_HEIGHT {
+	y = platform.bbox_top;
+}
+
+hsp_final = hsp + hsp_f;
+hsp_f = hsp_final - floor(abs(hsp_final))*sign(hsp_final);
+hsp_final -= hsp_f;
+ 
+vsp_final = vsp + vsp_f;
+vsp_f = vsp_final - floor(abs(vsp_final))*sign(vsp_final);
+vsp_final -= vsp_f;
+
+// Collision
+platform = collision_line(bbox_left,y+sign(vsp_final),bbox_left+hsp_final,y+vsp_final,oPlatform,false,false);
+if platform == noone platform = collision_line(bbox_right,y+sign(vsp_final),bbox_right+hsp_final,y+vsp_final,oPlatform,false,false);
+
+x += hsp_final;
+
+if platform != noone and y <= platform.bbox_top {
+	y = platform.bbox_top;
+	vsp_final = 0;
+	vsp = 0;
+	canJump = 10;
+}
+
+y += vsp_final;
+
+x = clamp(x,4,room_width-4);
+y = clamp(y,INFO_HEIGHT+8,room_height);
+
+if y == room_height vsp = jumpspd;

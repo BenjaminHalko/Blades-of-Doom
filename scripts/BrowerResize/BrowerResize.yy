@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "LeaderboardAPI",
+  "name": "BrowerResize",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "~Leaderboard API",
-    "path": "folders/~Leaderboard API.yy",
+    "name": "Global",
+    "path": "folders/Global.yy",
   },
 }

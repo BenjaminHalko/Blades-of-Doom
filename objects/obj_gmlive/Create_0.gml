@@ -1,6 +1,5 @@
 /// @description Don't forget to place this object in the first room!
 // this is a simple safeguard against making multiple obj_gmlive instances
-// feather disable GM2017
 if (instance_number(obj_gmlive) > 1) {
 	var first = instance_find(obj_gmlive, 0);
 	if (id != first) { instance_destroy(); exit; }
@@ -15,4 +14,4 @@ if (asset_get_index("live_init") == -1) show_error("live_init is missing!\nEithe
 // (e.g. when running on mobile platforms):
 live_init(1, "http://localhost:5100", "");
 
-#macro enableLive if live_call() return live_result
+#macro enableLive if(live_call()) return live_result
