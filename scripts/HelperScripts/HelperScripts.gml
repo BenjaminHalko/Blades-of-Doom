@@ -96,3 +96,13 @@ function Wrap(_value, _min, _max) {
 	}
 
 }
+
+function ScreenShake(_magnitude, _length) {
+	with (oGlobalController) {
+		if _magnitude > shakeRemain {
+			shakeLength = _length;
+			shakeMagnitude = _magnitude;
+			shakeRemain = _magnitude;
+		}
+	}
+}

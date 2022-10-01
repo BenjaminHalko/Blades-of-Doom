@@ -133,7 +133,7 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "Gui",
+    "path": "folders/Global/Gui.yy",
   },
 }

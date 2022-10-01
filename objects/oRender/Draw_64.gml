@@ -19,7 +19,7 @@ draw_surface(surfacePing,0,0);
 surface_reset_target();
 
 shader_set_uniform_f(uBlurVector,1,0);
-draw_surface_ext(surfacePong,0,0,1,1,0,make_color_hsv(0,0,255*0.5),1);
+draw_surface_ext(surfacePong,0,0,1,1,0,make_color_hsv(0,0,255*0.7),1);
 shader_reset();
 
 gpu_set_blendmode(bm_add);

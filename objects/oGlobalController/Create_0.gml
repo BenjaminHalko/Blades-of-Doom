@@ -2,6 +2,7 @@
 
 // Constants
 #macro PLATFORM_DIST 80
+#macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
 
 // Game Version
@@ -36,3 +37,15 @@ if (DESKTOP) window_set_size(960,540);
 
 //Create Game Manager
 instance_create_layer(0,0,layer,oGameManager);
+instance_create_layer(0,0,"Spikes",oSpikeCreator);
+
+// GUI
+timePulse = 0;
+lastTime = 0;
+heartPulse = [1,1];
+
+//Screen Shake
+cam = view_get_camera(0);
+shakeRemain = 0;
+shakeLength = 0;
+shakeMagnitude = 0;

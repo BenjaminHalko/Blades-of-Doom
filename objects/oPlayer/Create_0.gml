@@ -21,4 +21,16 @@ jumpTimer = 0;
 
 platform = noone;
 
+scale = 1;
+walkWave = 0;
+forwardDir = 0;
+
+invicibility = 0;
+knockback = 0;
+
+hp = 3;
+
 image_blend = c_lime;
+if player == 2 image_blend = #FF8800;
+
+deathTimer = 0;
