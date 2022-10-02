@@ -1,7 +1,11 @@
 /// @desc Movement
 enableLive;
 
-if !visible exit;
+
+if !visible {
+	if !oGameManager.gameStarted and oLeaderboardAPI.displayPercent < 0.05 visible = true;
+	exit;
+}
 
 //Input
 var _gpLeft = false;

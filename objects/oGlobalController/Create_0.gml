@@ -4,6 +4,7 @@
 #macro PLATFORM_DIST 80
 #macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
+#macro LEADERBOARDID "testingtest2"
 
 // Game Version
 enum OS {

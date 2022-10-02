@@ -11,7 +11,7 @@ if spikeIndex == 1 {
 	other.platform = noone;
 }
 if other.invicibility == 0 and other.hp > 0 {
-	other.invicibility = 60 * 2;
+	other.invicibility = 60;
 	other.hp--;
 	if other.hp <= 0 {
 		other.invicibility = 0;
@@ -19,9 +19,9 @@ if other.invicibility == 0 and other.hp > 0 {
 		other.knockback = sign(other.x-x);
 		if other.knockback == 0 other.knockback = 1;
 		oGameManager.scores[max(0,other.player-1)] = oGameManager.time;
-		if oGameManager.players[0].hp == 0 and (oGameManager.players[1] == noone or oGameManager.players[1].hp == 0) oGameManager.gameOver = true;
+		if oGameManager.players[0].hp == 0 and (oGameManager.players[1] == noone or oGameManager.players[1].hp == 0) GameOver();
 	}
 	oGlobalController.heartPulse[max(0,other.player-1)] = 1;
-}
+	ScreenShake(3,10);
+} else ScreenShake(1,5);
 flash = 1;
-ScreenShake(2,10);
