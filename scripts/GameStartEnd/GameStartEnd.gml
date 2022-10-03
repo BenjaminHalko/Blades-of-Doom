@@ -113,5 +113,16 @@ function GameOver() {
 				break;
 			}
 		}
+		if (OPERA) {
+			if (replacingScore != -1) {
+				if is_string(username) scores[replacingScore].name = username;
+				else scores[replacingScore].name = "PLAYER";
+				replacingScore = -1;
+			}
+			try {
+				try gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
+				catch(_error) show_debug_message(_error);
+			}
+		}
 	}
 }

@@ -48,13 +48,13 @@ if title and !instance_exists(oSpikeCreator) {
 	draw_sprite(sLogo,0,room_width/2,room_height/2-22-200*(1-titlePercent));
 	draw_text(room_width/2,room_height-14,"© 2022 BENJAMIN HALKO\nMADE FOR LUDUM DARE 51");
 	
-	if(!MOBILE) and false {
+	if(!MOBILE) {
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		draw_text(room_width/2-30,room_height-71,"1 PLAYER");
 		draw_text(room_width/2-30,room_height-57,"2 PLAYER");
 		draw_line(room_width/2-31,room_height-41-BROWSER,room_width/2+23,room_height-41-BROWSER);
-		draw_line(room_width/2-31+round(54*audioVol),room_height-45,room_width/2-31+round(54*audioVol),room_height-39);
+		draw_line(room_width/2-31+round(54*audioVol),room_height-45+OPERA,room_width/2-31+round(54*audioVol),room_height-39+OPERA);
 		draw_text(room_width/2-42,room_height-71+14*choice-(choice == 2)*2,">");
 		draw_sprite(sAudio,0,room_width/2+33,room_height-41-BROWSER);
 		draw_set_halign(fa_center);
@@ -62,4 +62,14 @@ if title and !instance_exists(oSpikeCreator) {
 		draw_set_valign(fa_middle);
 		draw_text(room_width/2,room_height-58,"TAP ANYWHERE TO START");
 	}
+}
+
+if(MOBILE and !instance_exists(oSpikeCreator)) {
+	draw_sprite_ext(sScreenButtons,0,leftScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
+	draw_sprite_ext(sScreenButtons,0,rightScreenX+1,screenButtonY+1,-1,1,0,c_black,0.4);
+	draw_sprite_ext(sScreenButtons,2,jumpScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
+	
+	draw_sprite(sScreenButtons,leftScreen,leftScreenX,screenButtonY);
+	draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
+	draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
 }

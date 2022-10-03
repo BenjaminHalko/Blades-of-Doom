@@ -22,9 +22,9 @@ if hp != 0 {
 	if(_gpLeft or _gpRight or _gpJump) global.usingGamepad = true;
 
 	if(player == 0) or (player == 2 and global.usingGamepad) {
-		_keyLeft = keyboard_check(vk_left) or keyboard_check(ord("A")) or (_gpLeft and player == 0);
-		_keyRight = keyboard_check(vk_right) or keyboard_check(ord("D")) or (_gpRight and player == 0);
-		_keyJump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or (_gpJump and player == 0);	
+		_keyLeft = keyboard_check(vk_left) or keyboard_check(ord("A")) or oGlobalController.leftScreen or (_gpLeft and player == 0);
+		_keyRight = keyboard_check(vk_right) or keyboard_check(ord("D")) or oGlobalController.rightScreen or (_gpRight and player == 0);
+		_keyJump = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or oGlobalController.jumpIsPressed or (_gpJump and player == 0);	
 	} else if(global.usingGamepad) { 
 		_keyLeft = _gpLeft;
 		_keyRight = _gpRight;

@@ -76,3 +76,30 @@ if keyboard_check_pressed(vk_tab) or device_mouse_check_button_pressed(3,mb_left
 	oRender.disable = !oRender.disable;
 	application_surface_draw_enable(oRender.disable);		
 }
+
+//MOBILE Controls
+if MOBILE {
+	var _jumpHeld = jumpScreen;
+	var _top = screenButtonY-24;
+	var _bottom = screenButtonY+24;
+	leftScreen = false;
+	rightScreen = false;
+	jumpScreen = false;
+	jumpIsPressed = false;
+	
+	for(var i = 0; i < 5; i++) {
+		if(!device_mouse_check_button(i, mb_left) and !device_mouse_check_button(i, mb_right)) continue;
+		
+		var _px = device_mouse_x(i);
+		var _py = device_mouse_y(i);
+		
+		if(point_in_rectangle(_px,_py,leftScreenX-48,_top,leftScreenX+24,_bottom)) leftScreen = true;
+		else if(point_in_rectangle(_px,_py,rightScreenX-24,_top,rightScreenX+48,_bottom)) rightScreen = true;
+		else if(point_in_circle(_px,_py,jumpScreenX,screenButtonY,48)) {
+			jumpScreen = true;
+			if(!_jumpHeld) jumpIsPressed = true;
+		}
+	}
+	
+	if(keyboard_check_pressed(vk_backspace) and !BROWSER) game_end(); 
+}

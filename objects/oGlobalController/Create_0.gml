@@ -6,6 +6,7 @@ randomize();
 #macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
 #macro LEADERBOARDID "1gsGigOfdp5eCKiv8xB1"
+#macro CHALLENGEID "c159bba5-6093-46e2-a63c-e989b825dbd5"
 #macro SAVEFILE "save.ini"
 #macro MAXHEALTH 5
 
@@ -58,6 +59,17 @@ cam = view_get_camera(0);
 shakeRemain = 0;
 shakeLength = 0;
 shakeMagnitude = 0;
+
+//GUI Controls
+leftScreen = false;
+rightScreen = false;
+jumpScreen = false;
+jumpIsPressed = false;
+	
+screenButtonY = room_height-40;
+leftScreenX = 40;
+rightScreenX = leftScreenX+48;
+jumpScreenX = room_width-leftScreenX;
 
 //Music
 audio_play_sound(mMusic,2,true);

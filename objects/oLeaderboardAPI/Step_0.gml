@@ -9,7 +9,7 @@ if waiting == 0 and oGameManager.gameOver {
 	}
 	if replacingScore != -1 {
 		if MOBILE keyboard_virtual_show(kbv_type_default,kbv_returnkey_done,kbv_autocapitalize_words,true);
-		if keyboard_check_pressed(vk_enter) or _gamepadEnter {
+		if keyboard_check_pressed(vk_enter) or _gamepadEnter or oGlobalController.jumpIsPressed {
 			if string_replace_all(scores[replacingScore].name," ","") != "" {
 				LeaderboardPost(variable_struct_get(scores[replacingScore],"score"),scores[replacingScore].name,LEADERBOARDID);
 				replacingScore = -1;
@@ -25,7 +25,7 @@ if waiting == 0 and oGameManager.gameOver {
 			keyboard_string = scores[replacingScore].name;
 			keyboard_lastchar = "";
 		}
-	} else if keyboard_check_pressed(vk_enter) or _gamepadEnter GameStart(oGameManager.players[1] != noone);
+	} else if keyboard_check_pressed(vk_enter) or _gamepadEnter or oGlobalController.jumpIsPressed GameStart(oGameManager.players[1] != noone);
 }
 
 if waiting == 0 displayPercent = ApproachFade(displayPercent,oGameManager.gameOver,0.1,0.8);
