@@ -71,3 +71,8 @@ if title and !instance_exists(oSpikeCreator) {
 if !title and (keyboard_check_pressed(vk_escape) or _gamepadEsc) {
 	BackToMenu();
 }
+
+if keyboard_check_pressed(vk_tab) or device_mouse_check_button_pressed(3,mb_left) {
+	oRender.disable = !oRender.disable;
+	application_surface_draw_enable(oRender.disable);		
+}

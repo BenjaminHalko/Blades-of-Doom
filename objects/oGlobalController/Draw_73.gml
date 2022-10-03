@@ -48,7 +48,7 @@ if title and !instance_exists(oSpikeCreator) {
 	draw_sprite(sLogo,0,room_width/2,room_height/2-22-200*(1-titlePercent));
 	draw_text(room_width/2,room_height-14,"© 2022 BENJAMIN HALKO\nMADE FOR LUDUM DARE 51");
 	
-	if(!MOBILE) {
+	if(!MOBILE) and false {
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		draw_text(room_width/2-30,room_height-71,"1 PLAYER");
@@ -58,5 +58,8 @@ if title and !instance_exists(oSpikeCreator) {
 		draw_text(room_width/2-42,room_height-71+14*choice-(choice == 2)*2,">");
 		draw_sprite(sAudio,0,room_width/2+33,room_height-41-BROWSER);
 		draw_set_halign(fa_center);
+	} else {
+		draw_set_valign(fa_middle);
+		draw_text(room_width/2,room_height-58,"TAP ANYWHERE TO START");
 	}
 }
