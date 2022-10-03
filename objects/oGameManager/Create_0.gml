@@ -7,7 +7,7 @@ players = [noone,noone];
 scores = [0,0];
 
 lastSpikeColor = c_white;
-newSpikeColor = #ff340c;
+newSpikeColor = #4100FF;
 spikeColor = c_fuchsia;
 reverseSpikeColor = c_white;
 spikeColorChange = 1;
