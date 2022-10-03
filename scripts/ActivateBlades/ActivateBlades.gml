@@ -44,8 +44,8 @@ function BladeAttackHorizontal() {
 		ActivateBlades(5,0,2,25);
 		ActivateBlades(13,4,2,25);
 	} else {
-		ActivateBlades(5,0,2,25);
-		ActivateBlades(13,4,2,25);
+		ActivateBlades(13,0,2,25);
+		ActivateBlades(5,4,2,25);
 	}
 }
 
@@ -63,7 +63,7 @@ function BladeAttackAll() {
 
 function BladeAttackRandom2() {
 	ActivateBlades(choose(0,1,2,3,4,8,9,10,11,12),0,4,10);
-	ActivateBlades(choose(5,6,7,13,14,15),0,4,10);
+	ActivateBlades(choose(5,7,13,15),0,4,10);
 	ActivateBlades(irandom_range(0,15),4,2,2);
 	ActivateBlades(irandom_range(0,15),6,2,2);
 }

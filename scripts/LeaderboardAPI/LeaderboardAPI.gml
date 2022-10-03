@@ -16,9 +16,9 @@ function LeaderboardGet(_scores,_ascend,_challengeID) {
 function LeaderboardPost(_score,_name,_challengeID) {
 	var _data = {
 		name: _name,
-		score: _score,
 		game: _challengeID
 	};
+	variable_struct_set(_data,"score",_score);
 	var _header = ds_map_create();
 	_header[? "Content-Type"] = "application/json";
 	http_request("https://lb.userdefined.io/games/submit","POST",_header,json_stringify(_data));

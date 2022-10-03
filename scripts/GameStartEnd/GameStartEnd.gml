@@ -98,16 +98,18 @@ function GameOver() {
 		for(var i = 0; i < min(array_length(scores)+1,maxScores); i++) {
 			if i == array_length(scores) {
 				array_insert(scores,i,{
-					name: "",
-					"score": oGameManager.time
+					name: ""
 				});
+				variable_struct_set(scores[i],"score",oGameManager.time);
 				replacingScore = i;
+				show_debug_message(scores[i].score);
 				break;
-			} else if oGameManager.time > variable_struct_get(scores[i],"score") {
+			} else if oGameManager.time > scores[i].score {
 				array_insert(scores,i,{
-					name: "",
-					"score": oGameManager.time
+					name: ""
 				});
+				variable_struct_set(scores[i],"score",oGameManager.time);
+				show_debug_message(scores[i].score);
 				if array_length(scores) > maxScores array_resize(scores,maxScores);
 				replacingScore = i;
 				break;

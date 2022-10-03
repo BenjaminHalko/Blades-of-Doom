@@ -68,7 +68,7 @@ if title and !instance_exists(oSpikeCreator) {
 	}
 }
 
-if !title and (keyboard_check_pressed(vk_escape) or _gamepadEsc) {
+if !title and (keyboard_check_pressed(vk_backspace) or _gamepadEsc) and oLeaderboardAPI.replacingScore == -1 {
 	BackToMenu();
 }
 

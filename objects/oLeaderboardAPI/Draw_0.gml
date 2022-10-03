@@ -34,14 +34,16 @@ for(var i = 0; i < array_length(scores); i++) {
 		if current_time % 1000 > 500 and string_length(scores[i].name) != 10 _name += "_";
 		draw_text(_x+10,_y+40+16*i,_name);
 		draw_text(_x+100,_y+40+16*i,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
-	} else if (OPERA) {
-		var _scale = min(1,string_width("AAAAAAAAAAAAA")/string_width(scores[i].name));
-		draw_text_transformed(_x+10,_y+40+16*i,scores[i].name,_scale,1,0);
 	} else {
-		draw_text(_x+10,_y+40+16*i,scores[i].name);
+		if (OPERA) {
+			var _scale = min(1,string_width("AAAAAAAAAAAAA")/string_width(scores[i].name));
+			draw_text_transformed(_x+10,_y+40+16*i,scores[i].name,_scale,1,0);
+		} else {
+			draw_text(_x+10,_y+40+16*i,scores[i].name);
+		}
+		var _score = variable_struct_get(scores[i],"score");
+		draw_text(_x+100+_extraSize,_y+40+16*i,string(floor(_score div 60))+":"+string_replace(string_format(_score % 60,2,2)," ","0"));
 	}
-	var _score = variable_struct_get(scores[i],"score");
-	draw_text(_x+100+_extraSize,_y+40+16*i,string(floor(_score div 60))+":"+string_replace(string_format(_score % 60,2,2)," ","0"));
 }
 
 draw_set_color(c_white);

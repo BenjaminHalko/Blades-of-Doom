@@ -1,6 +1,11 @@
 /// @desc
 if !other.visible exit;
-if spikeIndex == 2 {
+if direction == 90 {
+	if other.knockback == 0 {
+		other.knockback = sign(other.x-x);
+		other.vsp = -7;
+	} else other.vsp = min(other.vsp,-4);
+} else if spikeIndex == 2 {
 	other.vsp = -12;
 	other.knockback = 0;
 } else if spikeIndex == 0 {
@@ -14,13 +19,11 @@ if spikeIndex == 2 {
 	other.knockback = 1;
 	other.vsp = -7;
 } else {
-	if other.knockback == 0 {
-		other.knockback = sign(other.x-x);
-		other.vsp = -7;
-	} else other.vsp = min(other.vsp,-4.5);
+	other.knockback = sign(other.x-x);
+	other.vsp = -7;
 }
 if other.invicibility == 0 and other.hp > 0 {
-	other.invicibility = 60*1.5;
+	other.invicibility = 60*2;
 	other.hp--;
 	if other.hp <= 0 {
 		other.invicibility = 0;
