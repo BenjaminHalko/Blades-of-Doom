@@ -49,10 +49,6 @@ function BladeAttackHorizontal() {
 	}
 }
 
-function BladeAttackHorizontalLong() {
-	ActivateBlades(choose(5,7,13,15),0,4,50);
-}
-
 function BladeAttackAll() {
 	if irandom(1) == 0 {
 		for(var i = 0; i < 8; i++) {

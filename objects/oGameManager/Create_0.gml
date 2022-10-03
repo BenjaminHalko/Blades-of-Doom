@@ -19,7 +19,6 @@ attackFunctions = [
 BladeAttackVertical,
 BladeAttackVerticalFast,
 BladeAttackHorizontal,
-BladeAttackHorizontalLong,
 BladeAttackAll,
 BladeAttackRandom2];
 
