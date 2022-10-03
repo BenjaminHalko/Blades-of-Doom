@@ -4,7 +4,7 @@ varying vec4 v_vColour;
 uniform vec2 blur_vector;
 uniform vec2 texel_size;
 
-const float blur_steps = 10.0;
+const float blur_steps = 6.0;
 const float sigma = 0.6;
 
 float weight(float pos) {

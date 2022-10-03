@@ -14,6 +14,6 @@ newRecord = false;
 flash = 0;
 
 scores = [];
-ini_open("SAVEFILE.ini");
+ini_open(SAVEFILE);
 personalBest = ini_read_real("score","score",0);
 ini_close();

@@ -1,9 +1,13 @@
 /// @desc Create Spikes
 
+if --wait > 0 exit;
 repeat(4) {
 	var _spike = instance_create_layer(spikePos[0],spikePos[1],"Spikes",oSpike);
-	if introSide == 2 _spike.spikeIndex = 1;
-	if introSide == 0 _spike.spikeIndex = 2;
+	_spike.spikeIndex = introSide;
+	if introSide == 0 _spike.spikeNum = floor(spikePos[0] / (room_width/5));
+	else if introSide == 1 _spike.spikeNum = 5+floor((spikePos[1]-INFO_HEIGHT) / ((room_height-INFO_HEIGHT)/3));
+	else if introSide == 2 _spike.spikeNum = 8+floor((room_width-spikePos[0]) / (room_width/5));
+	else _spike.spikeNum = 13+floor((room_height-spikePos[1]) / ((room_height-INFO_HEIGHT)/3));
 	spikePos[introSide%2] += SPIKE_DIST * (1 - (introSide > 1)*2);
 	spikePos[introSide%2] = median(changeArray[introSide%2],changeArray[introSide%2+2],spikePos[introSide%2]);
 	if spikePos[introSide%2] == changeArray[introSide] {

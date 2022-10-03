@@ -8,5 +8,4 @@ uTexelSize = shader_get_uniform(shBlur,"texel_size");
 uBlurVector = shader_get_uniform(shBlur,"blur_vector");
 
 disable = false;
-
-application_surface_draw_enable(!disable);
+application_surface_draw_enable(false);

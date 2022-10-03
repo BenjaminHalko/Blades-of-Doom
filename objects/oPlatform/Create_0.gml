@@ -11,3 +11,5 @@ colOffset = random(1);
 pulse = 0;
 
 yPos = y;
+
+heart = noone;

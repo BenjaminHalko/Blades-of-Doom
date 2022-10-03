@@ -1,7 +1,5 @@
 /// @desc
 
-enableLive;
-
 if displayPercent == 0 exit;
 
 var _y = 50;
@@ -40,6 +38,7 @@ for(var i = 0; i < array_length(scores); i++) {
 	draw_text(_x+100,_y+40+16*i,string(floor(_score div 60))+":"+string_replace(string_format(_score % 60,2,2)," ","0"));
 }
 
+draw_set_color(c_white);
 draw_text(_x+10,_y+130,"PERSONAL BEST:");
 draw_text(_x+100,_y+144,string(floor(personalBest div 60))+":"+string_replace(string_format(personalBest % 60,2,2)," ","0"));
 

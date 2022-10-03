@@ -1,6 +1,4 @@
 /// @desc Movement
-enableLive;
-
 
 if !visible {
 	if !oGameManager.gameStarted and oLeaderboardAPI.displayPercent < 0.05 visible = true;
@@ -69,6 +67,7 @@ if((canJump-- > 0) && jumpTimer > 0) {
 	vsp = jumpspd;
 	canJump = 0;
 	jumpTimer = 0;
+	audio_play_sound(snJump,1,false);
 }
 
 jumpTimer--;
@@ -90,17 +89,19 @@ vsp_f = vsp_final - floor(abs(vsp_final))*sign(vsp_final);
 vsp_final -= vsp_f;
 
 // Collision
+var _landed = platform == noone;
 platform = collision_line(bbox_left,y+sign(vsp_final),bbox_left+hsp_final,y+vsp_final,oPlatform,false,false);
 if platform == noone platform = collision_line(bbox_right,y+sign(vsp_final),bbox_right+hsp_final,y+vsp_final,oPlatform,false,false);
 
 x += hsp_final;
 
-if platform != noone and y <= platform.bbox_top {
+if platform != noone and (y <= platform.bbox_top or (vsp > 0 and !place_meeting(x,y,oSpike))) {
 	y = platform.bbox_top;
 	vsp_final = 0;
 	vsp = 0;
 	knockback = 0;
 	canJump = 10;
+	if (_landed) audio_play_sound(snLand,1,false);
 } else platform = noone;
 
 y += vsp_final;

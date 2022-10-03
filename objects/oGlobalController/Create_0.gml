@@ -1,10 +1,13 @@
 /// @desc Initialize Game
+randomize();
 
 // Constants
 #macro PLATFORM_DIST 80
 #macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
-#macro LEADERBOARDID "testingtest2"
+#macro LEADERBOARDID "1gsGigOfdp5eCKiv8xB1"
+#macro SAVEFILE "save.ini"
+#macro MAXHEALTH 5
 
 // Game Version
 enum OS {
@@ -39,14 +42,22 @@ if (DESKTOP) window_set_size(960,540);
 //Create Game Manager
 instance_create_layer(0,0,layer,oGameManager);
 instance_create_layer(0,0,"Spikes",oSpikeCreator);
+title = true;
+titlePercent = 0;
+
 
 // GUI
 timePulse = 0;
-lastTime = 0;
 heartPulse = [1,1];
+choice = 0;
+audioVol = 0.7;
+audio_master_gain(audioVol);
 
 //Screen Shake
 cam = view_get_camera(0);
 shakeRemain = 0;
 shakeLength = 0;
 shakeMagnitude = 0;
+
+//Music
+audio_play_sound(mMusic,2,true);

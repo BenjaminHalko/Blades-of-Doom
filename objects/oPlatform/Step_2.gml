@@ -16,11 +16,11 @@ if active and !_lastActive {
 }
 
 activePercent = ApproachFade(activePercent,active,0.2,0.7);
-colPercent = ApproachFade(colPercent,active,0.02,0.8);
-var _col = make_color_hsv(Wave(160,170,2,colOffset),colPercent*150,lerp(120,255,colPercent));
+colPercent = ApproachFade(colPercent,active,0.015,0.8);
+var _col = make_color_hsv((Wave(185,200,2,colOffset)+color_get_hue(oGameManager.spikeColor))%255,colPercent*150,(lerp(120,255,colPercent)));
 
 if pulse != 0 {
-	_col = merge_color(_col,make_color_hsv(Wave(110,125,2,colOffset),255,255),pulse);	
+	_col = merge_color(_col,make_color_hsv((Wave(175,190,2,colOffset)+color_get_hue(oGameManager.spikeColor))%255,255,255),pulse);	
 }
 
 image_blend = _col;

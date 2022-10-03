@@ -28,7 +28,7 @@ forwardDir = 0;
 invicibility = 0;
 knockback = 0;
 
-hp = 3;
+hp = MAXHEALTH;
 
 image_blend = c_lime;
 if player == 2 image_blend = #FF8800;
