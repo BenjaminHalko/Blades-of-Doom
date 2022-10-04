@@ -29,6 +29,8 @@ invicibility = 0;
 knockback = 0;
 
 hp = MAXHEALTH;
+noSpikeHit = false;
+noPlatform = 0;
 
 image_blend = c_lime;
 if player == 2 image_blend = #FF8800;

@@ -15,7 +15,12 @@ else if charging == 0 {
 		var _x = lengthdir_x(30*i+_dist,(1-spikeIndex)*90);
 		var _y = lengthdir_y(30*i+_dist,(1-spikeIndex)*90);
 		
-		with(instance_create_layer(x+_x,y+_y,layer,oSpikeMove)) direction = (3-other.spikeIndex)*90;
+		with(instance_create_layer(x+_x,y+_y,layer,oSpikeMove)) {
+			direction = (3-other.spikeIndex)*90;
+			if (other.spikeNum == 7 or other.spikeNum == 13) and other.spikeLength >= 10 {
+				spikeIndex = 2;
+			}
+		}
 	}
 }
 

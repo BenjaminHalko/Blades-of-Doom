@@ -55,6 +55,8 @@ function GameStart(_2players) {
 		platform = noone;
 		canJump = 0;
 		jumpTimer = 0;
+		noSpikeHit = false;
+		noPlatform = 0;
 	}
 	
 	with(oSpike) {

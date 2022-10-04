@@ -9,7 +9,7 @@ if (gameStarted and !gameOver) {
 		newSpikeColor = make_color_hsv(random(255),255,255);
 		spikeColorChange = 0;
 		if time == 1/60 attackFunctions[0]();
-		else attackFunctions[irandom(array_length(attackFunctions)-1)]();
+		else BladeAttackHorizontal() //[irandom(array_length(attackFunctions)-1)]();
 	}
 	lastTime = oGameManager.time % 10;
 } else if !gameOver platformSpd = ApproachFade(platformSpd,0,0.7,0.8);

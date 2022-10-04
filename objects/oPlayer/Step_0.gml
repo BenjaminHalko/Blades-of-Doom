@@ -92,6 +92,10 @@ vsp_final -= vsp_f;
 var _landed = platform == noone;
 platform = collision_line(bbox_left,y+sign(vsp_final),bbox_left+hsp_final,y+vsp_final,oPlatform,false,false);
 if platform == noone platform = collision_line(bbox_right,y+sign(vsp_final),bbox_right+hsp_final,y+vsp_final,oPlatform,false,false);
+if noPlatform > 0 {
+	platform = noone;
+	noPlatform--;
+}
 
 x += hsp_final;
 
@@ -101,6 +105,7 @@ if platform != noone and (y <= platform.bbox_top or (vsp > 0 and !place_meeting(
 	vsp = 0;
 	knockback = 0;
 	canJump = 10;
+	noSpikeHit = false;
 	if (_landed) audio_play_sound(snLand,1,false);
 } else platform = noone;
 

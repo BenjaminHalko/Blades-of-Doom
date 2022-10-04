@@ -1,26 +1,24 @@
 /// @desc
 if !other.visible exit;
-if direction == 90 {
-	if other.knockback == 0 {
-		other.knockback = sign(other.x-x);
-		other.vsp = -7;
-	} else other.vsp = min(other.vsp,-4);
-} else if spikeIndex == 2 {
+if spikeIndex == 2 {
 	other.vsp = -12;
+	if object_index == oSpikeMove other.vsp = -9;
 	other.knockback = 0;
 } else if spikeIndex == 0 {
 	other.knockback = 0;
-	other.vsp = 0;
-	other.platform = noone;
+	other.vsp = max(other.vsp,0.1);
+	other.noPlatform = 8;
+	other.noSpikeHit = 5;
 } else if spikeIndex == 1 {
-	other.knockback = -1;
+	if !other.noSpikeHit other.knockback = -1;
 	other.vsp = -7;
 } else if spikeIndex == 3 {
 	other.knockback = 1;
-	other.vsp = -7;
+	if !other.noSpikeHit other.vsp = -7;
 } else {
 	other.knockback = sign(other.x-x);
-	other.vsp = -7;
+	if !other.noSpikeHit other.vsp = -7;
+	else other.noPlatform = 3;
 }
 if other.invicibility == 0 and other.hp > 0 {
 	other.invicibility = 60*2;
