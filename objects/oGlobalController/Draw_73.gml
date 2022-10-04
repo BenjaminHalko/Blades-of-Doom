@@ -55,7 +55,7 @@ if title and !instance_exists(oSpikeCreator) {
 		draw_text(room_width/2-30,room_height-57,"2 PLAYER");
 		draw_line(room_width/2-31,room_height-41-BROWSER,room_width/2+23,room_height-41-BROWSER);
 		draw_line(room_width/2-31+round(54*audioVol),room_height-45+OPERA,room_width/2-31+round(54*audioVol),room_height-39+OPERA);
-		draw_text(room_width/2-42,room_height-71+14*choice-(choice == 2)*2,">");
+		draw_text(room_width/2-42,room_height-71+14*choice-(choice == 2)*(1+BROWSER),">");
 		draw_sprite(sAudio,0,room_width/2+33,room_height-41-BROWSER);
 		draw_set_halign(fa_center);
 	} else {
