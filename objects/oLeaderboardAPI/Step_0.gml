@@ -8,7 +8,7 @@ if waiting == 0 and oGameManager.gameOver {
 		for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gamepadEnter = true;
 	}
 	if replacingScore != -1 {
-		if MOBILE keyboard_virtual_show(kbv_type_default,kbv_returnkey_done,kbv_autocapitalize_words,true);
+		if MOBILE and !keyboard_virtual_status() keyboard_virtual_show(kbv_type_default,kbv_returnkey_done,kbv_autocapitalize_words,true);
 		if keyboard_check_pressed(vk_enter) or _gamepadEnter or oGlobalController.jumpIsPressed {
 			if string_replace_all(scores[replacingScore].name," ","") != "" {
 				LeaderboardPost(variable_struct_get(scores[replacingScore],"score"),scores[replacingScore].name,LEADERBOARDID);
