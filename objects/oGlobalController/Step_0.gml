@@ -59,6 +59,9 @@ if title and !instance_exists(oSpikeCreator) {
 			audioVol = median(audioVol+0.1*_dir,0,1);
 			audio_master_gain(audioVol);
 			audio_play_sound(snSelect,1,false);
+			ini_open(SAVEFILE);
+			ini_write_real("audio","audio",audioVol);
+			ini_close();
 		}
 	} else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) GameStart(choice);
 	

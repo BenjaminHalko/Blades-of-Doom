@@ -58,7 +58,9 @@ titlePercent = 0;
 timePulse = 0;
 heartPulse = [1,1];
 choice = 0;
-audioVol = 0.7;
+ini_open(SAVEFILE)
+audioVol = ini_read_real("audio","audio",0.7);
+ini_close();
 audio_master_gain(audioVol);
 
 //Screen Shake
