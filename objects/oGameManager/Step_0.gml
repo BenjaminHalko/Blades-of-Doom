@@ -6,7 +6,7 @@ if (gameStarted and !gameOver) {
 	if oGameManager.time % 10 < lastTime {
 		oGlobalController.timePulse = 1;
 		lastSpikeColor = spikeColor;
-		newSpikeColor = make_color_hsv(random(255),255,255);
+		newSpikeColor = make_color_hsv(Wrap(color_get_hue(newSpikeColor)+random_range(20,70),0,255),255,255);
 		spikeColorChange = 0;
 		if time == 1/60 attackFunctions[0]();
 		else attackFunctions[irandom(array_length(attackFunctions)-1)]();
