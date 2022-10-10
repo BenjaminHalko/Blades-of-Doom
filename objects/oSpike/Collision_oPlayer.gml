@@ -1,5 +1,12 @@
 /// @desc
 if !other.visible exit;
+
+if other.sparkleTimer > 0 and object_index == oSpikeMove {
+	instance_destroy();
+	with(instance_create_depth(x,y,depth-1,oSpikeDestroy)) image_angle = other.image_angle;
+	exit;
+}
+
 if spikeIndex == 2 {
 	other.vsp = -12;
 	if object_index == oSpikeMove other.vsp = -9;
@@ -15,12 +22,13 @@ if spikeIndex == 2 {
 } else if spikeIndex == 3 {
 	other.knockback = 1;
 	if !other.noSpikeHit other.vsp = -7;
-} else {
+} else if other.sparkleTimer == 0 {
 	other.knockback = sign(other.x-x);
 	if !other.noSpikeHit other.vsp = -7;
 	else other.noPlatform = 3;
 }
-if other.invicibility == 0 and other.hp > 0 {
+
+if other.invicibility == 0 and other.hp > 0 and other.sparkleTimer == 0 {
 	other.invicibility = 60*2;
 	other.hp--;
 	if other.hp <= 0 {
@@ -34,8 +42,11 @@ if other.invicibility == 0 and other.hp > 0 {
 	oGlobalController.heartPulse[max(0,other.player-1)] = 1;
 	ScreenShake(6,10);
 	audio_play_sound(snHurt,1,false);
+	
 } else {
 	ScreenShake(3,5);
-	if (!audio_is_playing(snHurt)) audio_play_sound(snHurt,1,false);
+	if (DELUXE) {
+		if (!audio_is_playing(snHurt) and !audio_is_playing(snHurt2)) audio_play_sound(snHurt2,1,false);
+	} else if (!audio_is_playing(snHurt)) audio_play_sound(snHurt,1,false);
 }
 flash = 1;

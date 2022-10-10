@@ -12,9 +12,14 @@ draw_text(room_width/4,5,"PLAYER 1");
 draw_set_color(#FF8800);
 draw_text(room_width/4*3,5,"PLAYER 2");
 draw_set_color(c_white);
-draw_text(room_width/2,5,"TIME");
-if timePulse == 0 draw_text(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
-else draw_text_transformed(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"),timePulse*0.5+1,timePulse*0.5+1,0);
+if !DELUXE or !oGameManager.gameOver or oGameManager.players[1] == noone {
+	draw_text(room_width/2,5,"TIME");
+	if timePulse == 0 draw_text(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
+	else draw_text_transformed(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"),timePulse*0.5+1,timePulse*0.5+1,0);
+} else {
+	draw_text(room_width/2,5,"PLAYER "+string(1+(oGameManager.scores[1] > oGameManager.scores[0])));
+	draw_text(room_width/2,16,"WINS");
+}
 
 var _health;
 
@@ -45,7 +50,7 @@ if title and !instance_exists(oSpikeCreator) {
 	draw_set_color(c_white);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
-	draw_sprite(sLogo,0,room_width/2,room_height/2-22-200*(1-titlePercent));
+	draw_sprite(DELUXE ? sLogoDeluxe : sLogo,0,room_width/2,room_height/2-22-200*(1-titlePercent));
 	draw_text(room_width/2,room_height-14,"© 2022 BENJAMIN HALKO\nMADE FOR LUDUM DARE 51");
 	
 	if(!MOBILE) {

@@ -30,7 +30,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Common",
-    "path": "folders/Common.yy",
+    "name": "Pickup",
+    "path": "folders/Common/Pickup.yy",
   },
 }

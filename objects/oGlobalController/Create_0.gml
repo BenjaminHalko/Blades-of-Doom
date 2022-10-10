@@ -2,13 +2,20 @@
 randomize();
 
 // Constants
+#macro DELUXE 0
+#macro Deluxe:DELUXE 1
+
 #macro PLATFORM_DIST 80
 #macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
 #macro LEADERBOARDID "1gsGigOfdp5eCKiv8xB1"
+#macro Deluxe:LEADERBOARDID "1gsGigOfdp5eCKiv8xB12"
 #macro CHALLENGEID "c159bba5-6093-46e2-a63c-e989b825dbd5"
 #macro SAVEFILE "save.ini"
 #macro MAXHEALTH 5
+#macro PLATFORM_SPACING 1.05
+#macro GLOBALSPD (1-(oGameManager.slowTimer > 0)*0.5)
+
 
 // Game Version
 enum OS {

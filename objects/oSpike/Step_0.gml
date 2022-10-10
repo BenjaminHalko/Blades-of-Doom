@@ -1,6 +1,6 @@
 /// @desc
 
-image_angle -= (6+chargePercent*4)*image_xscale;
+image_angle -= (6+chargePercent*4)*image_xscale*GLOBALSPD;
 flash = ApproachFade(flash,0,0.1,0.8);
 if (charging != -1) chargePercent = (maxCharge-charging)/maxCharge;
 else chargePercent = ApproachFade(chargePercent,0,0.02,0.8);

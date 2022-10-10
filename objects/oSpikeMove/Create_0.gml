@@ -3,4 +3,5 @@
 flash = 0;
 spikeIndex = -1;
 onScreen = false;
-speed = (oGameManager.time/10)*0.25+6;
+spd = (oGameManager.time/10)*0.25+6;
+speed = spd;

@@ -29,6 +29,6 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Effects",
-    "path": "folders/Common/Effects.yy",
+    "path": "folders/Effects.yy",
   },
 }

@@ -2,6 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "sLogo",
+  "ConfigValues": {
+    "Deluxe": {"textureGroupId":"{\"name\":\"tgUnused\",\"path\":\"texturegroups/tgUnused\"}",},
+  },
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -68,7 +71,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+    "name": "Logo",
+    "path": "folders/Global/Logo.yy",
   },
 }

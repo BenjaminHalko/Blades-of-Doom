@@ -36,3 +36,4 @@ image_blend = c_lime;
 if player == 2 image_blend = #FF8800;
 
 deathTimer = 0;
+sparkleTimer = 0;

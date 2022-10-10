@@ -3,9 +3,43 @@ function ActivateBlades(_bladeType,_waitTime,_chargeTime,_spikeLength) {
 		if object_index != oSpike or spikeNum != _bladeType continue;
 		maxCharge = _chargeTime*60;
 		spikeLength = _spikeLength;
-		var _handle = call_later(_waitTime+random_range(0,0.1),time_source_units_seconds,function() {
-			charging = maxCharge;
-		});
+		alarm[0] = (_waitTime+random_range(0,0.1))*60+1;
+	}
+	
+	if DELUXE {
+		var _x, _y, _dir;
+		if _bladeType >= 13 {
+			_dir = 0;
+			_x = 0;
+			_y = room_height - (room_height-INFO_HEIGHT)/3 * (_bladeType-13) - (room_height-INFO_HEIGHT)/6;
+		} else if _bladeType >= 8 {
+			_dir = 90;
+			_x = room_width - (room_width/2-(room_width/2-room_width/6*(_bladeType+1-8))*PLATFORM_SPACING);
+			_y = room_height;
+		} else if _bladeType >= 5 {
+			_dir = 180;
+			_x = room_width;
+			_y = INFO_HEIGHT + (room_height-INFO_HEIGHT)/3 * (_bladeType-5) + (room_height-INFO_HEIGHT)/6;
+		} else {
+			_dir = -90;
+			_x = room_width/2-(room_width/2-room_width/6*(_bladeType+1))*PLATFORM_SPACING;
+			_y = INFO_HEIGHT;
+		}
+	
+		with(instance_create_layer(_x,_y,"Bars",oSpikeWarning)) {
+			barDir = _dir;
+			wait = _waitTime*60+20;
+			timeLeft = _chargeTime*60;
+			maxTime = timeLeft-10;
+			
+			if _bladeType == 0 or _bladeType == 12 {
+				x -= 10;
+				barWidth += 20;
+			} else if _bladeType == 4 or _bladeType == 8 {
+				x += 10;
+				barWidth += 20;
+			} else if (_bladeType >= 5 and _bladeType <= 7) or _bladeType >= 13 barWidth -= 2;
+		}
 	}
 }
 

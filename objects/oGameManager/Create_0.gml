@@ -23,3 +23,6 @@ BladeAttackAll,
 BladeAttackRandom2];
 
 attackNum = 0;
+specialItemWaitTime = 0;
+
+slowTimer = 0;

@@ -1,6 +1,6 @@
 /// @desc
 
-image_angle -= 6*image_xscale;
+image_angle -= 6*image_xscale*GLOBALSPD;
 image_blend = merge_color(oGameManager.reverseSpikeColor,c_white,flash);
 flash = ApproachFade(flash,0,0.1,0.8);
 
@@ -17,5 +17,5 @@ if !target.visible {
 	dir = ApproachCircleEase(dir,point_direction(x,y,target.x,target.y),3,0.8);
 	x += lengthdir_x(spd,dir);
 	y += lengthdir_y(spd,dir);
-	spd = ApproachFade(spd,0.5+floor(oGameManager.time/10)*0.02,0.01,0.8);
+	spd = ApproachFade(spd,(0.5+floor(oGameManager.time/10)*0.02)*GLOBALSPD,0.01,0.8);
 }

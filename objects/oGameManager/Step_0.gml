@@ -1,8 +1,12 @@
 /// @desc Game Logic
 
+if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*0.2)*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
+else platformSpd = ApproachFade(platformSpd,0,0.7,0.8);
+slowTimer = max(0,slowTimer-1);
+
 if (gameStarted and !gameOver) {
+	specialItemWaitTime = max(0,specialItemWaitTime-1);
 	time += 1/60;
-	platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*0.2)*(1-(time%20 >= 10)*2),0.7,0.8);
 	if oGameManager.time % 10 < lastTime {
 		oGlobalController.timePulse = 1;
 		lastSpikeColor = spikeColor;
@@ -12,7 +16,7 @@ if (gameStarted and !gameOver) {
 		else attackFunctions[irandom(array_length(attackFunctions)-1)]();
 	}
 	lastTime = oGameManager.time % 10;
-} else if !gameOver platformSpd = ApproachFade(platformSpd,0,0.7,0.8);
+}
 
 if spikeColorChange == 1 and spikeColor != newSpikeColor {
 	spikeColor = newSpikeColor;

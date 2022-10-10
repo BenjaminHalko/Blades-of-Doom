@@ -120,3 +120,21 @@ forwardDir = Approach(forwardDir,3*(_keyRight-_keyLeft)*(platform != noone),0.4)
 scale = ApproachFade(scale,median(1.5,0.5,platform != noone ? lerp(0.05,0.4,0.5+sin(walkWave*pi)/2)*(_keyLeft or _keyRight)+1 : vsp / -4),0.6+0.3*(vsp_final <= 0),0.7);
 
 invicibility = max(0,invicibility-1);
+sparkleTimer = max(0,sparkleTimer-1);
+
+if sparkleTimer > 0 {
+	var _dir = random(360);
+	with(instance_create_depth(x+lengthdir_x(8,_dir),y+lengthdir_y(8,_dir)-4,depth+1,oSparkle)) {
+		if irandom(1) != 0 creator = other.id;
+		xoffset = x-other.x;
+		yoffset = y-other.y;
+		sparkler = other.id;
+	}
+	
+	with(oSpikeMove) {
+		if point_in_circle(x,y,other.x,other.y,18) {
+			instance_destroy();
+			with(instance_create_depth(x,y,depth-1,oSpikeDestroy)) image_angle = other.image_angle;
+		}
+	}
+}
