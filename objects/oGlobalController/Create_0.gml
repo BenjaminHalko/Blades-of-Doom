@@ -15,6 +15,7 @@ randomize();
 #macro MAXHEALTH 5
 #macro PLATFORM_SPACING 1.05
 #macro GLOBALSPD (1-(oGameManager.slowTimer > 0)*0.5)
+#macro GLOBALSPIN (1-(oGameManager.slowTimer > 0)*0.75)
 
 
 // Game Version

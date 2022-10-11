@@ -12,7 +12,7 @@ draw_text(room_width/4,5,"PLAYER 1");
 draw_set_color(#FF8800);
 draw_text(room_width/4*3,5,"PLAYER 2");
 draw_set_color(c_white);
-if !DELUXE or !oGameManager.gameOver or oGameManager.players[1] == noone {
+if !oGameManager.gameOver or oGameManager.players[1] == noone {
 	draw_text(room_width/2,5,"TIME");
 	if timePulse == 0 draw_text(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
 	else draw_text_transformed(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"),timePulse*0.5+1,timePulse*0.5+1,0);

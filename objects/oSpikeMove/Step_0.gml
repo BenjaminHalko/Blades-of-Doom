@@ -1,6 +1,6 @@
 /// @desc
 
-image_angle -= 6*image_xscale*GLOBALSPD;
+image_angle -= 6*image_xscale*GLOBALSPIN;
 image_blend = merge_color(oGameManager.reverseSpikeColor,c_white,flash);
 flash = ApproachFade(flash,0,0.1,0.8);
 

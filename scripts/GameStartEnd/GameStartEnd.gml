@@ -7,7 +7,7 @@ function GameStart(_2players) {
 		time = 0;
 		gameStarted = false;
 		gameOver = false;
-		slowTimer = infinity;
+		slowTimer = 0;
 
 		if !instance_exists(oPlatform) {
 			for (var j = 0; j < 5; j++) {

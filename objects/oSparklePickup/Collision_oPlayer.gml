@@ -1,8 +1,9 @@
 /// @desc
 
-oGameManager.specialItemWaitTime = 15*60;
-other.sparkleTimer = 5*60;
+other.sparkleTimer = 10*60;
+oGameManager.specialItemWaitTime = other.sparkleTimer + 10*60;
+var _id = other.id;
 ScreenShake(6,5);
 audio_play_sound(snHeart,1,false);
-instance_create_layer(x,y,"Global",oSparkleExplode);
+with(instance_create_layer(x,y,"Global",oSparkleExplode)) target = _id;
 instance_destroy();

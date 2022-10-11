@@ -17,7 +17,7 @@ if (yPos < INFO_HEIGHT/2) or (yPos > room_height+INFO_HEIGHT/2) {
 	if _notAtFullHealth and irandom(5) == 0 and !instance_exists(oHeartPickup) and !oGameManager.gameOver {
 		heart = instance_create_layer(x,0,layer,oHeartPickup);
 	} else if DELUXE and _notInvincible and irandom(5) == 0 and oGameManager.specialItemWaitTime == 0 and !instance_exists(oSparklePickup) and !instance_exists(oSlowPickup) and !oGameManager.gameOver{
-		heart = instance_create_layer(x,0,layer,oSlowPickup);
+		heart = instance_create_layer(x,0,layer,choose(oSparklePickup,oSlowPickup));
 	}
 }
 if (yPos < INFO_HEIGHT/2) yPos += dist;
