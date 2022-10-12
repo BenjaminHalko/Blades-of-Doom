@@ -35,7 +35,6 @@
     {"id":{"name":"oHeartExplode","path":"objects/oHeartExplode/oHeartExplode.yy",},"order":1,},
     {"id":{"name":"sLogoDeluxe","path":"sprites/sLogoDeluxe/sLogoDeluxe.yy",},"order":1,},
     {"id":{"name":"HelperScripts","path":"scripts/HelperScripts/HelperScripts.yy",},"order":0,},
-    {"id":{"name":"snHurt2","path":"sounds/snHurt2/snHurt2.yy",},"order":5,},
     {"id":{"name":"oGameManager","path":"objects/oGameManager/oGameManager.yy",},"order":6,},
     {"id":{"name":"oSpikeWarning","path":"objects/oSpikeWarning/oSpikeWarning.yy",},"order":5,},
     {"id":{"name":"oSpikeChase","path":"objects/oSpikeChase/oSpikeChase.yy",},"order":6,},

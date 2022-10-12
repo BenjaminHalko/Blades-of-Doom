@@ -45,8 +45,9 @@ if other.invicibility == 0 and other.hp > 0 and other.sparkleTimer == 0 {
 	
 } else {
 	ScreenShake(3,5);
-	if (DELUXE) {
-		if (!audio_is_playing(snHurt) and !audio_is_playing(snHurt2)) audio_play_sound(snHurt2,1,false);
-	} else if (!audio_is_playing(snHurt)) audio_play_sound(snHurt,1,false);
+	if (!audio_is_playing(snHurt)) {
+		if DELUXE audio_play_sound(snHurt,1,false,0.55,0,0.95);
+		else audio_play_sound(snHurt,1,false);
+	}
 }
 flash = 1;
