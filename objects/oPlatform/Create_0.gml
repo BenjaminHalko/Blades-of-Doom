@@ -13,3 +13,5 @@ pulse = 0;
 yPos = y;
 
 heart = noone;
+heartCol = 0;
+heartPercent = 0;

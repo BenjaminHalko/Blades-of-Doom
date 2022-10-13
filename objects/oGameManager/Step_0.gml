@@ -26,3 +26,7 @@ if spikeColorChange == 1 and spikeColor != newSpikeColor {
 	spikeColor = merge_color(lastSpikeColor,newSpikeColor,spikeColorChange);
 	reverseSpikeColor = make_color_hsv((color_get_hue(spikeColor)+128)%255,255,255);
 }
+
+var _lastPitch = pitch;
+pitch = ApproachFade(pitch,1-0.2*(slowTimer > 30),0.02,0.8);
+if _lastPitch != pitch audio_sound_pitch(oGlobalController.music,pitch);

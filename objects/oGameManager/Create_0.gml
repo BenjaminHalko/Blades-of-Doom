@@ -26,3 +26,4 @@ attackNum = 0;
 specialItemWaitTime = 0;
 
 slowTimer = 0;
+pitch = 1;

@@ -1,6 +1,6 @@
 /// @desc
 
-oGameManager.slowTimer = 5*60;
+oGameManager.slowTimer = 10*60;
 oGameManager.specialItemWaitTime = oGameManager.slowTimer + 10*60;
 ScreenShake(6,5);
 audio_play_sound(snHeart,1,false);

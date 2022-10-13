@@ -3,7 +3,7 @@
 
 for(var i = 0; i < array_length(p); i++) {
 	draw_set_alpha(p[i].alpha);
-	draw_point_color(x+lengthdir_x(p[i].len,p[i].dir),y+lengthdir_y(p[i].len,p[i].dir)-4,color);
+	draw_point_color(x+lengthdir_x(p[i].len,p[i].dir),y+lengthdir_y(p[i].len,p[i].dir)-4,merge_color(p[i].color2,color,max(0,p[i].spdPercent)));
 	p[i].len += p[i].spd * max(0,p[i].spdPercent);
 	p[i].dir += p[i].spd * max(0,p[i].spdPercent);
 	p[i].spdPercent = ApproachFade(p[i].spdPercent,0,p[i].spdDecay,0.9);

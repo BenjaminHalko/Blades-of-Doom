@@ -1,6 +1,6 @@
 /// @desc Initialize Explosion
 
-color = #8000FF;
+color = c_white;
 
 p = [];
 
@@ -10,5 +10,6 @@ for(var i = 0; i < 16; i++) for(var j = 0; j < 16; j++) array_push(p,{
 	spdPercent: 1,
 	spdDecay: random_range(0.02,0.07),
 	len: point_distance(7,7,i,j),
-	alpha: 1
+	alpha: 1,
+	color2: choose(#0059FF,#00D4FF)
 });
