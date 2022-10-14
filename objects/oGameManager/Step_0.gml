@@ -30,3 +30,16 @@ if spikeColorChange == 1 and spikeColor != newSpikeColor {
 var _lastPitch = pitch;
 pitch = ApproachFade(pitch,1-0.2*(slowTimer > 30),0.02,0.8);
 if _lastPitch != pitch audio_sound_pitch(oGlobalController.music,pitch);
+
+if !ds_list_empty(sawList) {
+	for(var i = 0; i < ds_list_size(sawList); i++) {
+		if --sawList[| i].time <= 0 {
+			with(instance_create_layer(sawList[| i].x,sawList[| i].y,"Spikes",oSpikeMove)) {
+				direction = other.sawList[| i].dir;
+				if variable_struct_exists(other.sawList[| i],"bounce") spikeIndex = 2;
+			}
+			ds_list_delete(sawList,i);
+			i--;
+		}
+	}
+}

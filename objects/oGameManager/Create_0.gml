@@ -27,3 +27,5 @@ specialItemWaitTime = 0;
 
 slowTimer = 0;
 pitch = 1;
+
+sawList = ds_list_create();
