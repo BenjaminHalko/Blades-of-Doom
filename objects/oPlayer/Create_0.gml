@@ -14,7 +14,7 @@ vsp_final = 0;
 grv = 0.6;
 walkspd = 0.5;
 maxwalk = 2.3;
-jumpspd = -7;
+jumpspd = -7-0.2*DELUXE;
 
 canJump = 0;
 jumpTimer = 0;

@@ -19,12 +19,14 @@ if (gameStarted and !gameOver) {
 			var _max = easyWaves;
 			if time >= 60 _max = array_length(attackFunctions)-1;
 			else if time >= 30 _max = normalWaves;
-			attackFunctions[irandom(_max)]();
+			var _value = -1;
+			while(_value == -1 or (attackFunctions[_value] == BladeAttackVerticalSuperFast and time % 20 >= 10)) _value = irandom(_max);
+			attackFunctions[_value]();
 		}
 		else attackFunctionsOriginal[irandom(array_length(attackFunctionsOriginal)-1)]();
 	}
 	lastTime = oGameManager.time % 10;
-}
+} else slowTimer = 0;
 
 if spikeColorChange == 1 and spikeColor != newSpikeColor {
 	spikeColor = newSpikeColor;
@@ -36,7 +38,7 @@ if spikeColorChange == 1 and spikeColor != newSpikeColor {
 }
 
 var _lastPitch = pitch;
-pitch = ApproachFade(pitch,1-0.2*(slowTimer > 30),0.02,0.8);
+pitch = ApproachFade(pitch,1-0.2*(slowTimer > 60),0.01,0.8);
 if _lastPitch != pitch audio_sound_pitch(oGlobalController.music,pitch);
 
 if !ds_list_empty(sawList) {
@@ -45,7 +47,6 @@ if !ds_list_empty(sawList) {
 			if variable_struct_exists(other.sawList[| i],"dir") {
 				with(instance_create_layer(sawList[| i].x,sawList[| i].y,"Spikes",oSpikeMove)) {
 					direction = other.sawList[| i].dir;
-					if variable_struct_exists(other.sawList[| i],"bounce") spikeIndex = 2;
 				}
 			} else {
 				with(oSpike) {

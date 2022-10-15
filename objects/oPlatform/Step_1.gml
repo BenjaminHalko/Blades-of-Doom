@@ -17,11 +17,11 @@ if (yPos < INFO_HEIGHT/2) or (yPos > room_height+INFO_HEIGHT/2) {
 	instance_destroy(heart);
 	if _notAtFullHealth and irandom(5) == 0 and !instance_exists(oHeartPickup) and !oGameManager.gameOver {
 		heart = instance_create_layer(x,0,layer,oHeartPickup);
-		heartCol = make_color_hsv(0,180,255);
+		heartCol = 0;
 	} else if DELUXE and _notInvincible and irandom(5) == 0 and oGameManager.specialItemWaitTime == 0 and !instance_exists(oSparklePickup) and !instance_exists(oSlowPickup) and !oGameManager.gameOver{
 		heart = instance_create_layer(x,0,layer,choose(oSparklePickup,oSlowPickup));
-		if heart.object_index == oSparklePickup heartCol = make_color_hsv(35,180,255);
-		else heartCol = make_color_hsv(165,180,255);
+		if heart.object_index == oSparklePickup heartCol = 35;
+		else heartCol = 165;
 	}
 }
 if (yPos < INFO_HEIGHT/2) yPos += dist;

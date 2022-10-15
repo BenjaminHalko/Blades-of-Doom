@@ -44,21 +44,18 @@ function ActivateBlades(_bladeType,_waitTime,_chargeTime,_spikeLength,_shotType=
 			y: _y
 		});
 		
-		if _shotType == SHOT.WAVE or _shotType == SHOT.DUALWAVE {
+		if _shotType == SHOT.WAVE {
 			var _random = random(1);
 			var _random2 = random_range(1.35,1.65);
 			for(var j = 0; j < _spikeLength; j += 0.2) {
-				for(var i = 1; i >= -1; i-=2) {
-					var _len = sin((j/_random2+_random)*pi)*_width/2*i;
-					ds_list_add(oGameManager.sawList,{
-						dir: _dir,
-						x: _x - lengthdir_x(j*30,_dir) + lengthdir_x(_len,_dir+90),
-						y: _y - lengthdir_y(j*30,_dir) + lengthdir_y(_len,_dir+90),
-						time: _waitTime*60+_chargeTime*60,
-						sawstart: _chargeTime*60
-					});
-					if _shotType != SHOT.DUALWAVE break;
-				}
+				var _len = sin((j/_random2+_random)*pi)*_width/2;
+				ds_list_add(oGameManager.sawList,{
+					dir: _dir,
+					x: _x - lengthdir_x(j*30,_dir) + lengthdir_x(_len,_dir+90),
+					y: _y - lengthdir_y(j*30,_dir) + lengthdir_y(_len,_dir+90),
+					time: _waitTime*60+_chargeTime*60,
+					sawstart: _chargeTime*60
+				});
 			}
 		} else if _shotType == SHOT.TRIANGLE {
 			for(var i = -_width/2; i < _width/2; i += SPIKE_DIST) {
@@ -130,12 +127,34 @@ function BladeAttackVerticalFast() {
 			ActivateBlades(8,2,3,1,SHOT.TRIANGLE);
 			break;
 		case 2:
-			ActivateBlades(0,4,3,1,SHOT.TRIANGLE);	
-			ActivateBlades(11,2,3,1,SHOT.TRIANGLE);
+			ActivateBlades(0,1,3,1,SHOT.TRIANGLE);	
+			ActivateBlades(11,0.5,3,1,SHOT.TRIANGLE);
 			ActivateBlades(2,0,3,1,SHOT.TRIANGLE);
-			ActivateBlades(9,2,3,1,SHOT.TRIANGLE);
-			ActivateBlades(4,4,3,1,SHOT.TRIANGLE);
+			ActivateBlades(9,0.5,3,1,SHOT.TRIANGLE);
+			ActivateBlades(4,1,3,1,SHOT.TRIANGLE);
 			break;
+	}
+}
+
+function BladeAttackVerticalSuperFast() {
+	if irandom(1) == 0 {
+		ActivateBlades(0,0,3,5);
+		ActivateBlades(1,0.25,3,5);
+		ActivateBlades(2,0.5,3,5);
+		ActivateBlades(3,0.75,3,5);
+		ActivateBlades(8,3,3,5);
+		ActivateBlades(9,3.25,3,5);
+		ActivateBlades(10,3.5,3,5);
+		ActivateBlades(11,3.75,3,5);
+	} else {
+		ActivateBlades(4,0,2,8);
+		ActivateBlades(3,0.5,2,8);
+		ActivateBlades(2,1,2,8);
+		ActivateBlades(1,1.5,2,5);
+		ActivateBlades(12,3,2,8);
+		ActivateBlades(11,3.5,2,8);
+		ActivateBlades(10,4,2,8);
+		ActivateBlades(9,4.5,2,5);
 	}
 }
 
@@ -193,19 +212,23 @@ function BladeAttackCorners() {
 	ActivateBlades(0,0,2,1,SHOT.TRIANGLE);
 	ActivateBlades(7,2,2,1,SHOT.TRIANGLE);
 	ActivateBlades(8,2,2,1,SHOT.TRIANGLE);
+	ActivateBlades(12,4,2,1,SHOT.TRIANGLE);
+	ActivateBlades(4,4,2,1,SHOT.TRIANGLE);
+	ActivateBlades(2,6,2,1,SHOT.TRIANGLE);
+	ActivateBlades(10,6,2,1,SHOT.TRIANGLE);
 }
 
 function BladeAttackVerticalDoubleSides() {
-	ActivateBlades(0,0,3,1,SHOT.TRIANGLE);
-	ActivateBlades(2,0,3,1,SHOT.TRIANGLE);
-	ActivateBlades(4,0,3,1,SHOT.TRIANGLE);
-	ActivateBlades(9,1.5,3,1,SHOT.TRIANGLE);
-	ActivateBlades(11,1.5,3,1,SHOT.TRIANGLE);
-	ActivateBlades(8,3,3,1,SHOT.TRIANGLE);
-	ActivateBlades(10,3,3,1,SHOT.TRIANGLE);
-	ActivateBlades(12,3,3,1,SHOT.TRIANGLE);
-	ActivateBlades(1,4.5,3,1,SHOT.TRIANGLE);
-	ActivateBlades(3,4.5,3,1,SHOT.TRIANGLE);
+	ActivateBlades(0,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(2,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(4,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(9,1.5,2,1,SHOT.TRIANGLE);
+	ActivateBlades(11,1.5,2,1,SHOT.TRIANGLE);
+	ActivateBlades(8,3,2,1,SHOT.TRIANGLE);
+	ActivateBlades(10,3,2,1,SHOT.TRIANGLE);
+	ActivateBlades(12,3,2,1,SHOT.TRIANGLE);
+	ActivateBlades(1,4.5,2,1,SHOT.TRIANGLE);
+	ActivateBlades(3,4.5,2,1,SHOT.TRIANGLE);
 }
 
 function BladeAttackVerticalRandom() {
@@ -224,26 +247,30 @@ function BladeAttackSideWalls() {
 		ActivateBlades(0,0,2,90,SHOT.WAVE);
 		ActivateBlades(4,0,2,90,SHOT.WAVE);
 	
+		ActivateBlades(choose(9,10,11),3,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(9,10,11),4,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(9,10,11),5,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(9,10,11),6,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(9,10,11),7,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(9,10,11),8,1,1,SHOT.TRIANGLE);
 	} else {
 		ActivateBlades(12,0,2,90,SHOT.WAVE);
 		ActivateBlades(8,0,2,90,SHOT.WAVE);
 	
+		ActivateBlades(choose(1,2,3),3,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(1,2,3),4,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(1,2,3),5,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(1,2,3),6,1,1,SHOT.TRIANGLE);
 		ActivateBlades(choose(1,2,3),7,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(1,2,3),8,1,1,SHOT.TRIANGLE);
 	}
 }
 
-function BladeAttackCross() {
-	ActivateBlades(2,0,4,1,SHOT.TRIANGLE);
-	ActivateBlades(6,0,4,1,SHOT.TRIANGLE);
-	ActivateBlades(10,0,4,1,SHOT.TRIANGLE);
-	ActivateBlades(14,0,4,1,SHOT.TRIANGLE);
+function BladeAttackSides() {
+	ActivateBlades(13,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(15,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(7,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(5,0,2,1,SHOT.TRIANGLE);
+	ActivateBlades(4,0.5,2,1,SHOT.TRIANGLE);
+	ActivateBlades(8,0.5,2,1,SHOT.TRIANGLE);
+	ActivateBlades(12,0.5,2,1,SHOT.TRIANGLE);
+	ActivateBlades(0,0.5,2,1,SHOT.TRIANGLE);
 }

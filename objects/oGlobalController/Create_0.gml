@@ -99,6 +99,5 @@ music = audio_play_sound(mMusic,2,true);
 enum SHOT {
 	NORMAL,
 	WAVE,
-	DUALWAVE,
 	TRIANGLE
 }

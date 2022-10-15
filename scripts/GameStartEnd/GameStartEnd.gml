@@ -2,6 +2,7 @@ function GameStart(_2players) {
 	oGlobalController.title = false;
 	instance_destroy(oHeartPickup);
 	instance_destroy(oSparklePickup);
+	instance_destroy(oSlowPickup);
 	instance_destroy(oSpikeWarning);
 	with(oGameManager) {
 		time = 0;
@@ -79,6 +80,7 @@ function BackToMenu() {
 	instance_destroy(oSpikeWarning);
 	instance_destroy(oHeartPickup);
 	instance_destroy(oSparklePickup);
+	instance_destroy(oSlowPickup);
 	oLeaderboardAPI.displayPercent = 0;
 	oLeaderboardAPI.replacingScore = -1;
 	with(oGameManager) {
