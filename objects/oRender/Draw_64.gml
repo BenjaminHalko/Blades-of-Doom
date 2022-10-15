@@ -13,7 +13,6 @@ surface_reset_target();
 
 surface_set_target(surfacePong);
 shader_set(shBlur);
-shader_set_uniform_f(uTexelSize,1/global.resW,1/global.resH);
 shader_set_uniform_f(uBlurVector,0,1);
 draw_surface(surfacePing,0,0);
 surface_reset_target();

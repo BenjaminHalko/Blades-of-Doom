@@ -2,8 +2,8 @@ varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 uniform vec2 blur_vector;
-uniform vec2 texel_size;
 
+const vec2 texel_size = vec2(1.0/480.0,1.0/270.0);
 const float blur_steps = 6.0;
 const float sigma = 0.6;
 

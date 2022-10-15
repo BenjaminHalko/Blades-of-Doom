@@ -42,12 +42,21 @@ if _lastPitch != pitch audio_sound_pitch(oGlobalController.music,pitch);
 if !ds_list_empty(sawList) {
 	for(var i = 0; i < ds_list_size(sawList); i++) {
 		if --sawList[| i].time <= 0 {
-			with(instance_create_layer(sawList[| i].x,sawList[| i].y,"Spikes",oSpikeMove)) {
-				direction = other.sawList[| i].dir;
-				if variable_struct_exists(other.sawList[| i],"bounce") spikeIndex = 2;
+			if variable_struct_exists(other.sawList[| i],"dir") {
+				with(instance_create_layer(sawList[| i].x,sawList[| i].y,"Spikes",oSpikeMove)) {
+					direction = other.sawList[| i].dir;
+					if variable_struct_exists(other.sawList[| i],"bounce") spikeIndex = 2;
+				}
+			} else {
+				with(oSpike) {
+					if object_index != oSpike or spikeNum != other.sawList[| i].spikeNum continue;
+					maxCharge = other.sawList[| i].charge;
+					alarm[0] = point_distance(x,y,other.sawList[| i].x,other.sawList[| i].y)/3.5+1;
+				}
 			}
 			ds_list_delete(sawList,i);
 			i--;
-		}
+			
+		} 
 	}
 }

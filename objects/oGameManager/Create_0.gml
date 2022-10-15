@@ -19,7 +19,7 @@ attackFunctionsOriginal = [
 BladeAttackVertical,
 BladeAttackVerticalFast,
 BladeAttackHorizontal,
-BladeAttackAll,
+BladeAttackAllOld,
 BladeAttackRandom2Old];
 
 attackFunctions = [
@@ -28,15 +28,16 @@ BladeAttackVerticalFast,
 BladeAttackVerticalRandom,
 
 BladeAttackHorizontal,
-BladeAttackRandom2,
 BladeAttackSideWalls,
+BladeAttackCorners,
+BladeAttackCross,
 
-BladeAttack4Bunch,
+BladeAttackRandom2,
 BladeAttackAll,
 BladeAttackVerticalDoubleSides
 ];
 easyWaves = 2;
-normalWaves = 5;
+normalWaves = 6;
 
 
 attackNum = 0;

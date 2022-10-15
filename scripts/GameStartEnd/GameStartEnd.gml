@@ -12,7 +12,7 @@ function GameStart(_2players) {
 
 		if !instance_exists(oPlatform) {
 			for (var j = 0; j < 5; j++) {
-				for (var i = abs(j-2)*10-8; i < room_height+PLATFORM_DIST; i += PLATFORM_DIST) {
+				for (var i = abs(j-2)*10-8; i < room_height; i += PLATFORM_DIST) {
 					with(instance_create_layer(room_width/2-(room_width/2-room_width/6*(j+1))*PLATFORM_SPACING,i-40*(j%2),"Platforms",oPlatform)) dir = (j%2)*2-1;
 				}
 			}
@@ -86,6 +86,7 @@ function BackToMenu() {
 		gameStarted = false;
 		gameOver = false;
 		players = [noone,noone];
+		ds_list_clear(sawList);
 	}
 	with(oSpike) {
 		if object_index != oSpike continue;

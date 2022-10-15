@@ -106,3 +106,34 @@ function ScreenShake(_magnitude, _length) {
 		}
 	}
 }
+
+function RenderConverArt(_sprite) {
+	var _surfacePing = surface_create(sprite_get_width(_sprite),sprite_get_height(_sprite));
+	var _surfacePong = surface_create(sprite_get_width(_sprite),sprite_get_height(_sprite));
+
+	surface_set_target(_surfacePing);
+	draw_sprite(_sprite,0,0,0);
+	surface_reset_target();
+
+	surface_set_target(_surfacePong);
+	shader_set(shBlur);
+	shader_set_uniform_f(oRender.uBlurVector,0,1);
+	draw_surface(_surfacePing,0,0);
+	surface_reset_target();
+
+	surface_set_target(_surfacePing);
+	shader_set_uniform_f(oRender.uBlurVector,1,0);
+	draw_surface_ext(_surfacePong,0,0,1,1,0,make_color_hsv(0,0,255*0.9),1);
+	shader_reset();
+
+	gpu_set_blendmode(bm_add);
+	draw_sprite_ext(_sprite,0,0,0,1,1,0,make_color_hsv(0,0,255*0.55),1);
+	gpu_set_blendmode(bm_normal);
+	surface_reset_target();
+
+	var _file = get_save_filename("*.png","CoverArt.png");
+	surface_save(_surfacePing,_file);
+
+	surface_free(_surfacePing);
+	surface_free(_surfacePong);	
+}

@@ -2,6 +2,9 @@
   "resourceType": "GMWindowsOptions",
   "resourceVersion": "1.1",
   "name": "Windows",
+  "ConfigValues": {
+    "Deluxe": {"option_windows_start_fullscreen":"true",},
+  },
   "option_windows_display_name": "Blades of Doom",
   "option_windows_executable_name": "${project_name}.exe",
   "option_windows_version": "1.0.0.0",
