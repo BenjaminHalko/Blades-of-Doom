@@ -8,6 +8,7 @@ function GameStart(_2players) {
 		gameStarted = false;
 		gameOver = false;
 		slowTimer = 0;
+		ds_list_clear(sawList);
 
 		if !instance_exists(oPlatform) {
 			for (var j = 0; j < 5; j++) {
@@ -109,33 +110,35 @@ function GameOver() {
 			ini_write_real("score","score",personalBest);
 			ini_close();
 		} else newRecord = false;
-		for(var i = 0; i < min(array_length(scores)+1,maxScores); i++) {
-			if i == array_length(scores) {
-				array_insert(scores,i,{
-					name: ""
-				});
-				variable_struct_set(scores[i],"score",oGameManager.time);
-				replacingScore = i;
-				break;
-			} else if oGameManager.time > scores[i].score {
-				array_insert(scores,i,{
-					name: ""
-				});
-				variable_struct_set(scores[i],"score",oGameManager.time);
-				if array_length(scores) > maxScores array_resize(scores,maxScores);
-				replacingScore = i;
-				break;
+		if global.online {
+			for(var i = 0; i < min(array_length(scores)+1,maxScores); i++) {
+				if i == array_length(scores) {
+					array_insert(scores,i,{
+						name: ""
+					});
+					variable_struct_set(scores[i],"score",oGameManager.time);
+					replacingScore = i;
+					break;
+				} else if oGameManager.time > scores[i].score {
+					array_insert(scores,i,{
+						name: ""
+					});
+					variable_struct_set(scores[i],"score",oGameManager.time);
+					if array_length(scores) > maxScores array_resize(scores,maxScores);
+					replacingScore = i;
+					break;
+				}
 			}
-		}
-		if (OPERA) {
-			if (replacingScore != -1) {
-				if is_string(username) scores[replacingScore].name = username;
-				else scores[replacingScore].name = "PLAYER";
-				replacingScore = -1;
-			}
-			try {
-				try gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
-				catch(_error) show_debug_message(_error);
+			if (OPERA) {
+				if (replacingScore != -1) {
+					if is_string(username) scores[replacingScore].name = username;
+					else scores[replacingScore].name = "PLAYER";
+					replacingScore = -1;
+				}
+				try {
+					try gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
+					catch(_error) show_debug_message(_error);
+				}
 			}
 		}
 	}

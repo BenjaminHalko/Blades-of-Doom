@@ -15,15 +15,33 @@ spikeColorChange = 1;
 lastTime = 9;
 platformSpd = 0;
 
-attackFunctions = [
+attackFunctionsOriginal = [
 BladeAttackVertical,
 BladeAttackVerticalFast,
 BladeAttackHorizontal,
 BladeAttackAll,
-BladeAttackRandom2];
+BladeAttackRandom2Old];
+
+attackFunctions = [
+BladeAttackVertical,
+BladeAttackVerticalFast,
+BladeAttackVerticalRandom,
+
+BladeAttackHorizontal,
+BladeAttackRandom2,
+BladeAttackSideWalls,
+
+BladeAttack4Bunch,
+BladeAttackAll,
+BladeAttackVerticalDoubleSides
+];
+easyWaves = 2;
+normalWaves = 5;
+
 
 attackNum = 0;
 specialItemWaitTime = 0;
+firstRound = true;
 
 slowTimer = 0;
 pitch = 1;

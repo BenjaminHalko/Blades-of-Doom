@@ -2,6 +2,9 @@
   "resourceType": "GMAndroidOptions",
   "resourceVersion": "1.0",
   "name": "Android",
+  "ConfigValues": {
+    "Deluxe": {"option_android_orient_landscape_flipped":"true","option_android_orient_portrait":"false",},
+  },
   "option_android_sync_amazon": false,
   "option_android_display_name": "Blades of Doom",
   "option_android_version": "1.0.0.0",

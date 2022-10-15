@@ -32,4 +32,4 @@ y = yPos+activePercent*5;
 if instance_exists(heart) {
 	heart.y = y - Wave(6,10,1,0);
 	heartPercent = 1;
-} else heartPercent = ApproachFade(heartPercent,0,0.01,0.8);
+} else heartPercent = ApproachFade(heartPercent,0,0.02,0.8);

@@ -12,8 +12,16 @@ if (gameStarted and !gameOver) {
 		lastSpikeColor = spikeColor;
 		newSpikeColor = make_color_hsv(Wrap(color_get_hue(newSpikeColor)+random_range(20,70),0,255),255,255);
 		spikeColorChange = 0;
-		if time == 1/60 attackFunctions[0]();
-		else attackFunctions[irandom(array_length(attackFunctions)-1)]();
+		if firstRound {
+			BladeAttackVertical();
+			firstRound = false;
+		} else if DELUXE {
+			var _max = easyWaves;
+			if time >= 60 _max = array_length(attackFunctions)-1;
+			else if time >= 30 _max = normalWaves;
+			attackFunctions[irandom(_max)]();
+		}
+		else attackFunctionsOriginal[irandom(array_length(attackFunctionsOriginal)-1)]();
 	}
 	lastTime = oGameManager.time % 10;
 }

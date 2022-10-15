@@ -16,6 +16,7 @@ randomize();
 #macro PLATFORM_SPACING 1.05
 #macro GLOBALSPD (1-(oGameManager.slowTimer > 0)*0.5)
 #macro GLOBALSPIN (1-(oGameManager.slowTimer > 0)*0.75)
+#macro GLOBALSAWSPD (1-(oGameManager.slowTimer > 0)*0.35)
 
 
 // Game Version
@@ -43,6 +44,8 @@ if OPERA {
 	global.mobileOperaGX = _info[? "mobile"];
 	ds_map_destroy(_info);
 }
+
+global.online = false//os_is_network_connected();
 
 // Rendering
 global.resW = 480;
@@ -90,3 +93,12 @@ jumpScreenX = room_width-leftScreenX;
 
 //Music
 music = audio_play_sound(mMusic,2,true);
+
+//Shot Type
+enum SHOT {
+	NORMAL,
+	WAVE,
+	REVERSEWAVE,
+	DUALWAVE,
+	TRIANGLE
+}
