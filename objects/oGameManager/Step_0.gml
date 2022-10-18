@@ -1,6 +1,6 @@
 /// @desc Game Logic
 
-if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*0.2)*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
+if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*(0.2-0.05*DELUXE))*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
 else platformSpd = ApproachFade(platformSpd,0,0.7,0.8);
 slowTimer = max(0,slowTimer-1);
 
@@ -17,7 +17,8 @@ if (gameStarted and !gameOver) {
 			firstRound = false;
 		} else if DELUXE {
 			var _max = easyWaves;
-			if time >= 60 _max = array_length(attackFunctions)-1;
+			if time >= 90 _max = array_length(attackFunctions)-1;
+			if time >= 60 _max = hardWaves;
 			else if time >= 30 _max = normalWaves;
 			var _value = -1;
 			while(_value == -1 or (attackFunctions[_value] == BladeAttackVerticalSuperFast and time % 20 >= 10)) _value = irandom(_max);

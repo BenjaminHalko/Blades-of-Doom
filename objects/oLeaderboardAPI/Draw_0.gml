@@ -25,14 +25,17 @@ if global.online {
 	for(var i = 0; i < array_length(scores); i++) {
 		draw_set_color(c_white);
 		if i == replacingScore {
-			var _name = scores[i].name;
-			if _name == "" {
-				draw_set_color(c_dkgray);
-				draw_text(_x+10,_y+40+16*i,"Enter Name");
+			if !MOBILE {
+				var _name = scores[i].name;
+				if _name == "" {
+					draw_set_color(c_dkgray);
+					draw_text(_x+10,_y+40+16*i,"Enter Name");
+				}
+				draw_set_color(merge_color(c_yellow,c_red,flash));
+				if current_time % 1000 > 500 and string_length(scores[i].name) != 10 _name += "_";
+				draw_text(_x+10,_y+40+16*i,_name);
 			}
-			draw_set_color(merge_color(c_yellow,c_red,flash));
-			if current_time % 1000 > 500 and string_length(scores[i].name) != 10 _name += "_";
-			draw_text(_x+10,_y+40+16*i,_name);
+			
 			draw_text(_x+100,_y+40+16*i,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
 		} else {
 			if (OPERA) {
@@ -63,3 +66,23 @@ if newRecord {
 
 draw_set_color(c_gray);
 draw_text(_x+40+_extraSize/2,_y+174,"PRESS ENTER");
+
+if replacingScore != -1 and MOBILE {
+	draw_set_alpha(0.5);
+	draw_set_color(c_black);
+	draw_rectangle(0,0,room_width,room_height,false);
+	draw_set_alpha(1);
+	draw_set_color(c_white);
+	draw_roundrect(room_width/2-54,room_height/2-14,room_width/2+54,room_height/2+14,true);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+				
+	var _name = scores[replacingScore].name;
+	if _name == "" {
+		draw_set_color(c_dkgray);
+		draw_text(room_width/2,room_height/2,"Enter Name");
+	} else {
+		draw_set_color(merge_color(c_yellow,c_red,flash));
+		draw_text(room_width/2,room_height/2,_name);
+	}	
+}

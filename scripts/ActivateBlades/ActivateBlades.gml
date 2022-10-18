@@ -111,28 +111,18 @@ function BladeAttackVertical() {
 }
 
 function BladeAttackVerticalFast() {
-	switch(irandom(1+DELUXE)) {
-		default:
-			ActivateBlades(4,0,3,1,SHOT.TRIANGLE);
-			ActivateBlades(9,0.5,3,1,SHOT.TRIANGLE);
-			ActivateBlades(2,1,3,1,SHOT.TRIANGLE);
-			ActivateBlades(11,1.5,3,1,SHOT.TRIANGLE);
-			ActivateBlades(0,2,3,1,SHOT.TRIANGLE);
-			break;
-		case 1:
-			ActivateBlades(12,0,3,1,SHOT.TRIANGLE);	
-			ActivateBlades(1,0.5,3,1,SHOT.TRIANGLE);
-			ActivateBlades(10,1,3,1,SHOT.TRIANGLE);
-			ActivateBlades(3,1.5,3,1,SHOT.TRIANGLE);
-			ActivateBlades(8,2,3,1,SHOT.TRIANGLE);
-			break;
-		case 2:
-			ActivateBlades(0,1,3,1,SHOT.TRIANGLE);	
-			ActivateBlades(11,0.5,3,1,SHOT.TRIANGLE);
-			ActivateBlades(2,0,3,1,SHOT.TRIANGLE);
-			ActivateBlades(9,0.5,3,1,SHOT.TRIANGLE);
-			ActivateBlades(4,1,3,1,SHOT.TRIANGLE);
-			break;
+	if irandom(1) == 0 {
+		ActivateBlades(4,0,3,1,SHOT.TRIANGLE);
+		ActivateBlades(9,0.5,3,1,SHOT.TRIANGLE);
+		ActivateBlades(2,1,3,1,SHOT.TRIANGLE);
+		ActivateBlades(11,1.5,3,1,SHOT.TRIANGLE);
+		ActivateBlades(0,2,3,1,SHOT.TRIANGLE);
+	} else {
+		ActivateBlades(12,0,3,1,SHOT.TRIANGLE);	
+		ActivateBlades(1,0.5,3,1,SHOT.TRIANGLE);
+		ActivateBlades(10,1,3,1,SHOT.TRIANGLE);
+		ActivateBlades(3,1.5,3,1,SHOT.TRIANGLE);
+		ActivateBlades(8,2,3,1,SHOT.TRIANGLE);
 	}
 }
 
@@ -156,6 +146,21 @@ function BladeAttackVerticalSuperFast() {
 		ActivateBlades(10,4,2,8);
 		ActivateBlades(9,4.5,2,5);
 	}
+}
+
+function BladeAttackVerticalSuperFastHalf() {
+	ActivateBlades(0,0,2,5);
+	ActivateBlades(1,0.25,2,5);
+	ActivateBlades(2,0.5,2,5);
+	ActivateBlades(8,2.5,2,5);
+	ActivateBlades(9,2.75,2,5);
+	ActivateBlades(10,3,2,5);
+	ActivateBlades(0,5.25,1,5);
+	ActivateBlades(1,5.5,1,5);
+	ActivateBlades(8,6.25,1,5);
+	ActivateBlades(9,6.5,1,5);
+	ActivateBlades(2,7.5,1,1,SHOT.TRIANGLE);
+	ActivateBlades(10,7.5,1,1,SHOT.TRIANGLE);
 }
 
 function BladeAttackHorizontal() {
@@ -208,14 +213,20 @@ function BladeAttackRandom2() {
 }
 
 function BladeAttackCorners() {
-	ActivateBlades(15,0,2,1,SHOT.TRIANGLE);
-	ActivateBlades(0,0,2,1,SHOT.TRIANGLE);
-	ActivateBlades(7,2,2,1,SHOT.TRIANGLE);
-	ActivateBlades(8,2,2,1,SHOT.TRIANGLE);
-	ActivateBlades(12,4,2,1,SHOT.TRIANGLE);
-	ActivateBlades(4,4,2,1,SHOT.TRIANGLE);
-	ActivateBlades(2,6,2,1,SHOT.TRIANGLE);
-	ActivateBlades(10,6,2,1,SHOT.TRIANGLE);
+	
+	ActivateBlades(12,0,1,1,SHOT.TRIANGLE);
+	ActivateBlades(4,0,1,1,SHOT.TRIANGLE);
+	ActivateBlades(15,1,1,1,SHOT.TRIANGLE);
+	ActivateBlades(0,1,1,1,SHOT.TRIANGLE);
+	ActivateBlades(7,2,1,1,SHOT.TRIANGLE);
+	ActivateBlades(8,2,1,1,SHOT.TRIANGLE);
+	ActivateBlades(5,3,1,1,SHOT.TRIANGLE);
+	ActivateBlades(4,3,1,1,SHOT.TRIANGLE);
+	ActivateBlades(12,4,1,1,SHOT.TRIANGLE);
+	ActivateBlades(13,4,1,1,SHOT.TRIANGLE);
+	
+	ActivateBlades(2,5,1,1,SHOT.TRIANGLE);
+	ActivateBlades(10,5,1,1,SHOT.TRIANGLE);
 }
 
 function BladeAttackVerticalDoubleSides() {
@@ -246,21 +257,24 @@ function BladeAttackSideWalls() {
 	if irandom(1) == 0 {
 		ActivateBlades(0,0,2,90,SHOT.WAVE);
 		ActivateBlades(4,0,2,90,SHOT.WAVE);
-	
-		ActivateBlades(choose(9,10,11),3,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(9,10,11),4,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(9,10,11),5,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(9,10,11),6,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(9,10,11),7,1,1,SHOT.TRIANGLE);
+		var _spot = -1;
+		var _lastSpot = _spot;
+		for(var i = 3; i <= 8; i++) {
+			while(_spot == _lastSpot) _spot = choose(9,10,11);
+			_lastSpot = _spot;
+			ActivateBlades(_spot,i,1,1,SHOT.TRIANGLE);
+		}
 	} else {
 		ActivateBlades(12,0,2,90,SHOT.WAVE);
 		ActivateBlades(8,0,2,90,SHOT.WAVE);
 	
-		ActivateBlades(choose(1,2,3),3,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(1,2,3),4,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(1,2,3),5,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(1,2,3),6,1,1,SHOT.TRIANGLE);
-		ActivateBlades(choose(1,2,3),7,1,1,SHOT.TRIANGLE);
+		var _spot = -1;
+		var _lastSpot = _spot;
+		for(var i = 3; i <= 8; i++) {
+			while(_spot == _lastSpot) _spot = choose(1,2,3);
+			_lastSpot = _spot;
+			ActivateBlades(_spot,i,1,1,SHOT.TRIANGLE);
+		}
 	}
 }
 

@@ -132,6 +132,7 @@ function GameOver() {
 					break;
 				}
 			}
+			replacingScore = 0;
 			if (OPERA) {
 				if (replacingScore != -1) {
 					if is_string(username) scores[replacingScore].name = username;

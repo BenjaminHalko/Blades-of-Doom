@@ -29,16 +29,19 @@ BladeAttackVerticalRandom,
 
 BladeAttackHorizontal,
 BladeAttackSideWalls,
-BladeAttackCorners,
+BladeAttackVerticalSuperFastHalf,
+
 BladeAttackVerticalSuperFast,
+BladeAttackCorners,
+BladeAttackRandom2,
 
 BladeAttackSides,
-BladeAttackRandom2,
 BladeAttackAll,
 BladeAttackVerticalDoubleSides
 ];
 easyWaves = 2;
-normalWaves = 6;
+normalWaves = 5;
+hardWaves = 8;
 
 attackNum = 0;
 specialItemWaitTime = 0;
