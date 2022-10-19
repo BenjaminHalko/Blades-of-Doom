@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "Android",
   "ConfigValues": {
-    "Deluxe": {"option_android_orient_landscape_flipped":"true","option_android_orient_portrait":"false",},
+    "Deluxe": {"option_android_orient_landscape_flipped":"true","option_android_orient_portrait":"false","option_android_build_tools":"","option_android_support_lib":"33.0.0","option_android_target_sdk":"33","option_android_compile_sdk":"33","option_android_minimum_sdk":"16",},
   },
   "option_android_sync_amazon": false,
   "option_android_display_name": "Blades of Doom",

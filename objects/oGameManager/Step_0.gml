@@ -44,8 +44,9 @@ if _lastPitch != pitch audio_sound_pitch(oGlobalController.music,pitch);
 
 if !ds_list_empty(sawList) {
 	for(var i = 0; i < ds_list_size(sawList); i++) {
-		if --sawList[| i].time <= 0 {
-			if variable_struct_exists(other.sawList[| i],"dir") {
+		sawList[| i].time--;
+		if sawList[| i].time <= 0 {
+			if variable_struct_exists(sawList[| i],"dir") {
 				with(instance_create_layer(sawList[| i].x,sawList[| i].y,"Spikes",oSpikeMove)) {
 					direction = other.sawList[| i].dir;
 				}
@@ -58,7 +59,6 @@ if !ds_list_empty(sawList) {
 			}
 			ds_list_delete(sawList,i);
 			i--;
-			
 		} 
 	}
 }

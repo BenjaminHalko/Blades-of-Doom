@@ -2,6 +2,9 @@
   "resourceType": "GMLinuxOptions",
   "resourceVersion": "1.0",
   "name": "Linux",
+  "ConfigValues": {
+    "Deluxe": {"option_linux_start_fullscreen":"true",},
+  },
   "option_linux_display_name": "Blades of Doom",
   "option_linux_version": "1.0.0.0",
   "option_linux_maintainer_email": "",
