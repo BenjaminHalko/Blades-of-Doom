@@ -17,7 +17,7 @@ camera_set_view_pos(cam,random_range(-shakeRemain,shakeRemain),random_range(-sha
 
 var _gamepadEsc = false;
 for(var i = 0; i < gamepad_get_device_count(); i++) {
-	if (gamepad_button_check_pressed(i,gp_select)) {
+	if (gamepad_button_check_pressed(i,gp_select) or gamepad_button_check_pressed(i,gp_start)) {
 		_gamepadEsc = true;
 		break;
 	}
@@ -29,7 +29,6 @@ if title and oSpikeManager.doneCreating {
 	var _gamepadAudioDir = 0;
 	
 	for(var i = 0; i < gamepad_get_device_count(); i++) {
-		if DESKTOP and gamepad_button_check_pressed(i,gp_start) window_set_fullscreen(!window_get_fullscreen());
 		for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gamepadPressed = true;
 		_gamepadDir = (gamepad_button_check(i,gp_padd) or gamepad_axis_value(i,gp_axislv) >= 0.5) - (gamepad_button_check(i,gp_padu) or gamepad_axis_value(i,gp_axislv) <= -0.5);
 		_gamepadAudioDir = (gamepad_button_check(i,gp_padr) or gamepad_axis_value(i,gp_axislh) >= 0.5) - (gamepad_button_check(i,gp_padl) or gamepad_axis_value(i,gp_axislh) <= -0.5);
@@ -43,7 +42,7 @@ if title and oSpikeManager.doneCreating {
 	}
 	if(_gamepadPressed) global.usingGamepad = true;
 	
-	if (keyboard_check_pressed(vk_escape) or _gamepadEsc) and DESKTOP game_end();
+	if keyboard_check_pressed(vk_escape) and DESKTOP game_end();
 	
 	var _dir = median(-1,1,((keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))) - (keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))))+_gamepadDir);
 	if !MOBILE and _dir != 0 {

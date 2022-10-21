@@ -1,6 +1,6 @@
 /// @desc Game Logic
 
-if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*(0.2-0.02*DELUXE))*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
+if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*(0.2-0.05*DELUXE))*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
 else platformSpd = ApproachFade(platformSpd,0,0.7,0.8);
 slowTimer = max(0,slowTimer-1);
 
@@ -39,7 +39,7 @@ if spikeColorChange == 1 and spikeColor != newSpikeColor {
 }
 
 var _lastPitch = pitch;
-pitch = ApproachFade(pitch,1-0.2*(slowTimer > 60),0.01,0.8);
+pitch = ApproachFade(pitch,1-0.3*(slowTimer > 60),0.01,0.8);
 if _lastPitch != pitch audio_sound_pitch(oGlobalController.music,pitch);
 
 if !ds_list_empty(sawList) {
