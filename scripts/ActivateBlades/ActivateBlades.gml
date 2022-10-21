@@ -86,13 +86,15 @@ function ActivateBlades(_bladeType,_waitTime,_chargeTime,_spikeLength,_shotType=
 			}
 		}
 	} else {
-		with(oSpike) {
-			if object_index != oSpike or spikeNum != _bladeType continue;
+		with(oSpikeManager) {
+			for(var i = 0; i < ds_list_size(spikes); i++) {
+				if spikes[| i].spikeNum != _bladeType continue;
 		
-			maxCharge = _chargeTime*60;
-			spikeLength = _spikeLength;
-			alarm[0] = (_waitTime+random_range(0,0.1))*60+1;
-		}	
+				spikes[| i].maxCharge = _chargeTime*60;
+				spikes[| i].spikeLength = _spikeLength;
+				spikes[| i].timer = (_waitTime+random_range(0,0.1))*60+1;
+			}
+		}
 	}
 }
 

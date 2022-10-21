@@ -1,13 +1,13 @@
 
+
 // Lock file execution
 function gxc_api() {}
 
 // ###################### API FUNCTIONS ######################
-
 /// @function gxc_get_query_param(key)
 /// @description Returns the parameter value corresponding to the given key.
 /// @param {string} key The parameter string key
-/// @returns {string/undefined} The string value of the parameter or undefined if not found.
+/// @returns {string} The string value of the parameter or undefined if not found.
 /// @notes Parameters will only be available during remote playing or if passed
 ///		through the browser's URL manually. In order to understand how this works use
 ///		the provided guide link, mainly the section on "Testing Challenges Locally":
@@ -46,8 +46,8 @@ function gxc_get_query_param(key) {
 
 /// @function gxc_profile_get_info(callback)
 /// @description Queries for the current player profile information.
-/// @param {method} callback The function to be called upon task completion.
-/// @returns {integer} The http request unique identifier.
+/// @param {function} callback The function to be called upon task completion.
+/// @returns {real} The http request unique identifier.
 function gxc_profile_get_info(_callback = undefined) {
 
 	// Parameter validation
@@ -65,9 +65,9 @@ function gxc_profile_get_info(_callback = undefined) {
 
 /// @function gxc_challenge_get_challenges(callback, options)
 /// @description Get list current game's challenges.
-/// @param {method} callback The function to be called upon task completion.
+/// @param {function} callback The function to be called upon task completion.
 /// @param {struct} options This struct can contain pagination (page, pageSize) and track (trackId) values.
-/// @returns {integer} The http request unique identifier.
+/// @returns {real} The http request unique identifier.
 function gxc_challenge_get_challenges(_callback = undefined, _options = undefined) {
 	
 	static _defaultOptions = {
@@ -105,9 +105,9 @@ function gxc_challenge_get_challenges(_callback = undefined, _options = undefine
 /// @function gxc_challenge_submit_score(score, callback, options)
 /// @description Submits a new challenge score.
 /// @param {real} score The new score to be submitted.
-/// @param {method} callback The function to be called upon task completion.
+/// @param {function} callback The function to be called upon task completion.
 /// @param {struct} options This struct can contain the challenge (challengeId) to submit to.
-/// @returns {integer} The http request unique identifier.
+/// @returns {real} The http request unique identifier.
 function gxc_challenge_submit_score(_score, _callback = undefined, _options = undefined) {
 
 	static _defaultOptions = {
@@ -154,7 +154,7 @@ function gxc_challenge_submit_score(_score, _callback = undefined, _options = un
 
 /// @function gxc_challenge_get_global_scores(callback, options)
 /// @description Get current challenge top scores.
-/// @param {method} callback The function to be called upon task completion.
+/// @param {function} callback The function to be called upon task completion.
 /// @param {struct} options This struct can contain pagination (page, pageSize), track (trackId) and challenge (challengeId) values.
 function gxc_challenge_get_global_scores(_callback = undefined, _options = undefined) {
 	
@@ -194,9 +194,9 @@ function gxc_challenge_get_global_scores(_callback = undefined, _options = undef
 
 /// @function gxc_challenge_get_user_scores(callback, options)
 /// @description Get signed in user's challenge scores
-/// @param {method} callback The function to be called upon task completion.
+/// @param {function} callback The function to be called upon task completion.
 /// @param {struct} options This struct can contain pagination (page, pageSize), track (trackId) and challenge (challengeId) values.
-/// @returns {integer} The http request unique identifier.
+/// @returns {real} The http request unique identifier.
 function gxc_challenge_get_user_scores(_callback = undefined, _options = undefined) {
 	
 	static _defaultOptions = {
@@ -260,8 +260,8 @@ function gxc_challenge_get_user_scores(_callback = undefined, _options = undefin
 
 /// @function gxc_get_profile(callback)
 /// @description Queries for the current player profile information.
-/// @param {method} callback The function to be called upon task completion.
-/// @returns {integer} The http request unique identifier.
+/// @param {function} callback The function to be called upon task completion.
+/// @returns {real} The http request unique identifier.
 /// @notes This method is being DEPRECATED (avoid using it)
 function gxc_get_profile(_callback = undefined) {
 	show_debug_message("[WARNING] gxc_get_profile, function is deprecated and will be removed in the future; use 'gxc_profile_get_info' instead.");
@@ -271,8 +271,8 @@ function gxc_get_profile(_callback = undefined) {
 /// @function gxc_submit_challenge_score(score, callback)
 /// @description Submits a new challenge score.
 /// @param {real} score The new score to be submitted.
-/// @param {method} callback The function to be called upon task completion.
-/// @returns {integer} The http request unique identifier.
+/// @param {function} callback The function to be called upon task completion.
+/// @returns {real} The http request unique identifier.
 /// @notes This method is being DEPRECATED (avoid using it)
 function gxc_submit_challenge_score(_score, _callback = undefined) {
 	show_debug_message("[WARNING] gxc_submit_challenge_score, function is deprecated and will be removed in the future; use 'gxc_challenge_submit_score' instead.");
@@ -381,6 +381,7 @@ function __gxc_event_asyncListener(_payload) {
 	var _result = _payload[? "result"];
 	if (_result != "") {
 		_result = json_parse(_result);
+		// Feather disable once GM1041
 		structToMap(_result, _asyncMap);
 	}
 	

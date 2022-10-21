@@ -19,13 +19,19 @@ if global.online {
 							})	
 						}
 					}
-				} catch(_error) show_debug_message(_error);
+				} catch(_error) {
+					show_debug_message(_error);
+				}
 			},{challengeId: CHALLENGEID, page: 0, pageSize: 5});
-		} catch(_error) show_debug_message(_error);
+		} catch(_error) {
+			show_debug_message(_error);
+		}
 	
 		try {
 			username = gxc_get_query_param("username");
-		} catch(_error) show_debug_message(_error);
+		} catch(_error) {
+			show_debug_message(_error);
+		}
 	} else LeaderboardGet(maxScores,false,LEADERBOARDID);
 }
 
@@ -47,3 +53,5 @@ if !file_exists(SAVEFILE) {
 	personalBest = ini_read_real("score","score",0);
 	ini_close();
 }
+
+allowedChars = font_get_info(GuiFont).glyphs;

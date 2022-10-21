@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "Windows",
   "ConfigValues": {
-    "Deluxe": {"option_windows_start_fullscreen":"true",},
+    "Deluxe": {"option_windows_start_fullscreen":"true","option_windows_copyright_info":"BenjaminHalko 2022","option_windows_company_info":"Benjamin Halko","option_windows_use_splash":"false","option_windows_splash_screen":"splash/splash.png",},
   },
   "option_windows_display_name": "Blades of Doom",
   "option_windows_executable_name": "${project_name}.exe",

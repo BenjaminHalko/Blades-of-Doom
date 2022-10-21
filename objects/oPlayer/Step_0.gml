@@ -99,7 +99,7 @@ if noPlatform > 0 {
 
 x += hsp_final;
 
-if platform != noone and (y <= platform.bbox_top or (vsp > -DELUXE*0.3 and !place_meeting(x,y,oSpike))) {
+if platform != noone and (y <= platform.bbox_top or (vsp > -DELUXE*0.3 and noPlatform <= 0)) {
 	y = platform.bbox_top;
 	vsp_final = 0;
 	vsp = 0;
@@ -129,12 +129,5 @@ if sparkleTimer > 0 {
 		xoffset = x-other.x;
 		yoffset = y-other.y;
 		sparkler = other.id;
-	}
-	
-	with(oSpikeMove) {
-		if point_in_circle(x,y,other.x,other.y,18) {
-			instance_destroy();
-			with(instance_create_depth(x,y,depth-1,oSpikeDestroy)) image_angle = other.image_angle;
-		}
 	}
 }

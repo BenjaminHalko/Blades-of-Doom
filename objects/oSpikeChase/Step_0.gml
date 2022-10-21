@@ -17,6 +17,5 @@ if !target.visible {
 	dir = ApproachCircleEase(dir,point_direction(x,y,target.x,target.y),3,0.8);
 	x += lengthdir_x(spd,dir);
 	y += lengthdir_y(spd,dir);
-	var _sp
 	spd = ApproachFade(spd,(0.5-0.1*DELUXE+floor(oGameManager.time/10)*0.02)*GLOBALSPD,0.01,0.8);
 }

@@ -1,6 +1,6 @@
 /// @desc Game Logic
 
-if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*(0.2-0.05*DELUXE))*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
+if gameStarted platformSpd = ApproachFade(platformSpd,(1+floor(time/10)*(0.2-0.02*DELUXE))*(1-(time%20 >= 10)*2)*GLOBALSPD,0.7,0.8);	
 else platformSpd = ApproachFade(platformSpd,0,0.7,0.8);
 slowTimer = max(0,slowTimer-1);
 
@@ -13,7 +13,7 @@ if (gameStarted and !gameOver) {
 		newSpikeColor = make_color_hsv(Wrap(color_get_hue(newSpikeColor)+random_range(20,70),0,255),255,255);
 		spikeColorChange = 0;
 		if firstRound {
-			BladeAttackVertical();
+			BladeAttackSideWalls();
 			firstRound = false;
 		} else if DELUXE {
 			var _max = easyWaves;
@@ -47,14 +47,14 @@ if !ds_list_empty(sawList) {
 		sawList[| i].time--;
 		if sawList[| i].time <= 0 {
 			if variable_struct_exists(sawList[| i],"dir") {
-				with(instance_create_layer(sawList[| i].x,sawList[| i].y,"Spikes",oSpikeMove)) {
-					direction = other.sawList[| i].dir;
-				}
+				ds_list_add(oSpikeManager.spikesMove,new SpikeMove(sawList[| i].x,sawList[| i].y,sawList[| i].dir));
 			} else {
-				with(oSpike) {
-					if object_index != oSpike or spikeNum != other.sawList[| i].spikeNum continue;
-					maxCharge = other.sawList[| i].charge;
-					alarm[0] = point_distance(x,y,other.sawList[| i].x,other.sawList[| i].y)/3.5+1;
+				with(oSpikeManager) {
+					for(var j = 0; j < ds_list_size(spikes); j++) {
+						if spikes[| j].spikeNum != other.sawList[| i].spikeNum continue;
+						spikes[| j].maxCharge = other.sawList[| i].charge;
+						spikes[| j].timer = point_distance(spikes[| j].x,spikes[| j].y,other.sawList[| i].x,other.sawList[| i].y)/3.5+1;
+					}
 				}
 			}
 			ds_list_delete(sawList,i);

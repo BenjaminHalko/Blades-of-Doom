@@ -47,7 +47,7 @@ for(var j = 0; j < 2; j++) {
 	heartPulse[j] = ApproachFade(heartPulse[j],0,0.1,0.8);
 }
 
-if title and !instance_exists(oSpikeCreator) {
+if title and oSpikeManager.doneCreating {
 	draw_set_color(c_white);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
@@ -70,7 +70,7 @@ if title and !instance_exists(oSpikeCreator) {
 	}
 }
 
-if(MOBILE and !instance_exists(oSpikeCreator)) {
+if(MOBILE and oSpikeManager.doneCreating) {
 	draw_sprite_ext(sScreenButtons,0,leftScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
 	draw_sprite_ext(sScreenButtons,0,rightScreenX+1,screenButtonY+1,-1,1,0,c_black,0.4);
 	draw_sprite_ext(sScreenButtons,2,jumpScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
@@ -79,3 +79,8 @@ if(MOBILE and !instance_exists(oSpikeCreator)) {
 	draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
 	draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
 }
+
+draw_set_color(c_white);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_text(16,8,fps);

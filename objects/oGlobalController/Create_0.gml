@@ -60,7 +60,7 @@ if (DESKTOP) window_set_size(960,540);
 
 //Create Game Manager
 instance_create_layer(0,0,layer,oGameManager);
-instance_create_layer(0,0,"Spikes",oSpikeCreator);
+instance_create_layer(0,0,"Spikes",oSpikeManager);
 title = true;
 titlePercent = 0;
 

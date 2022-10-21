@@ -23,7 +23,7 @@ for(var i = 0; i < gamepad_get_device_count(); i++) {
 	}
 }
 
-if title and !instance_exists(oSpikeCreator) {
+if title and oSpikeManager.doneCreating {
 	var _gamepadPressed = false;
 	var _gamepadDir = 0;
 	var _gamepadAudioDir = 0;

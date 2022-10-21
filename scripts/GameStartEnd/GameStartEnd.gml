@@ -34,11 +34,11 @@ function GameStart(_2players) {
 			}
 		}
 		
-		instance_destroy(oSpikeMove);
+		ds_list_clear(oSpikeManager.spikesMove);
 		instance_destroy(oSpikeChase);
 		
 		for(var i = 0; i <= _2players; i++) {
-			var _spike = instance_find(oSpike,irandom(instance_number(oSpike)-1));
+			var _spike = oSpikeManager.spikes[| irandom(ds_list_size(oSpikeManager.spikes)-1)];
 			var _dir = point_direction(room_width/2,(room_height-INFO_HEIGHT)/2+INFO_HEIGHT,_spike.x,_spike.y);
 			with(instance_create_layer(_spike.x+lengthdir_x(20,_dir),_spike.y+lengthdir_y(20,_dir),layer,oSpikeChase)) target = other.players[i];
 		}
@@ -64,11 +64,12 @@ function GameStart(_2players) {
 		sparkleTimer = 0;
 	}
 	
-	with(oSpike) {
-		if object_index != oSpike continue;
-		chargePercent = 0;
-		charging = -1;
-		alarm[0] = -1;
+	with(oSpikeManager) {
+		for(var i = 0; i < ds_list_size(spikes); i++) {
+			spikes[| i].chargePercent = 0;
+			spikes[| i].charging = -1;
+			spikes[| i].timer = -1;
+		}
 	}
 }
 
@@ -76,11 +77,11 @@ function BackToMenu() {
 	instance_destroy(oPlayer);
 	instance_destroy(oPlatform);
 	instance_destroy(oSpikeChase);
-	instance_destroy(oSpikeMove);
 	instance_destroy(oSpikeWarning);
 	instance_destroy(oHeartPickup);
 	instance_destroy(oSparklePickup);
 	instance_destroy(oSlowPickup);
+	ds_list_clear(oSpikeManager.spikesMove);
 	oLeaderboardAPI.displayPercent = 0;
 	oLeaderboardAPI.replacingScore = -1;
 	with(oGameManager) {
@@ -90,11 +91,12 @@ function BackToMenu() {
 		players = [noone,noone];
 		ds_list_clear(sawList);
 	}
-	with(oSpike) {
-		if object_index != oSpike continue;
-		chargePercent = 0;
-		charging = -1;
-		alarm[0] = -1;
+	with(oSpikeManager) {
+		for(var i = 0; i < ds_list_size(spikes); i++) {
+			spikes[| i].chargePercent = 0;
+			spikes[| i].charging = -1;
+			spikes[| i].timer = -1;
+		}
 	}
 	oGlobalController.title = true;
 	oGlobalController.titlePercent = 0;
@@ -103,6 +105,7 @@ function BackToMenu() {
 function GameOver() {
 	oGameManager.gameOver = true;
 	keyboard_string = "";
+	keyboard_lastkey = vk_nokey;
 	
 	with(oLeaderboardAPI) {
 		waiting = 40;
@@ -132,7 +135,7 @@ function GameOver() {
 					break;
 				}
 			}
-			replacingScore = 0;
+			if MOBILE and replacingScore != -1 keyboard_virtual_show(kbv_type_ascii,kbv_returnkey_done,kbv_autocapitalize_words,true);
 			if (OPERA) {
 				if (replacingScore != -1) {
 					if is_string(username) scores[replacingScore].name = username;
@@ -140,8 +143,11 @@ function GameOver() {
 					replacingScore = -1;
 				}
 				try {
-					try gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
-					catch(_error) show_debug_message(_error);
+					try {
+						gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
+					} catch(_error) {
+						show_debug_message(_error);
+					}
 				}
 			}
 		}

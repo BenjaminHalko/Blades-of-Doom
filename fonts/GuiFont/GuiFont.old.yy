@@ -4,7 +4,7 @@
   "name": "GuiFont",
   "hinting": 0,
   "glyphOperations": 0,
-  "interpreter": 1,
+  "interpreter": 0,
   "pointRounding": 0,
   "applyKerning": 0,
   "fontName": "Press Start 2P",
