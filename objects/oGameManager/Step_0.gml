@@ -13,7 +13,7 @@ if (gameStarted and !gameOver) {
 		newSpikeColor = make_color_hsv(Wrap(color_get_hue(newSpikeColor)+random_range(20,70),0,255),255,255);
 		spikeColorChange = 0;
 		if firstRound {
-			BladeAttackSideWalls();
+			BladeAttackVertical();
 			firstRound = false;
 		} else if DELUXE {
 			var _max = easyWaves;

@@ -79,8 +79,3 @@ if(MOBILE and oSpikeManager.doneCreating) {
 	draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
 	draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
 }
-
-draw_set_color(c_white);
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_text(16,8,fps);

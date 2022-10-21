@@ -99,7 +99,7 @@ if noPlatform > 0 {
 
 x += hsp_final;
 
-if platform != noone and (y <= platform.bbox_top or (vsp > -DELUXE*0.3 and noPlatform <= 0)) {
+if platform != noone and (y <= platform.bbox_top or (vsp > 0 and noPlatform <= 0)) {
 	y = platform.bbox_top;
 	vsp_final = 0;
 	vsp = 0;

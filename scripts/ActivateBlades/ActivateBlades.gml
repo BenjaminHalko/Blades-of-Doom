@@ -257,22 +257,22 @@ function BladeAttackVerticalRandom() {
 
 function BladeAttackSideWalls() {
 	if irandom(1) == 0 {
-		ActivateBlades(0,0,2,90,SHOT.WAVE);
-		ActivateBlades(4,0,2,90,SHOT.WAVE);
+		ActivateBlades(0,0,2,70,SHOT.WAVE);
+		ActivateBlades(4,0,2,70,SHOT.WAVE);
 		var _spot = -1;
 		var _lastSpot = _spot;
-		for(var i = 3; i <= 8; i++) {
+		for(var i = 3; i <= 7; i++) {
 			while(_spot == _lastSpot) _spot = choose(9,10,11);
 			_lastSpot = _spot;
 			ActivateBlades(_spot,i,1,1,SHOT.TRIANGLE);
 		}
 	} else {
-		ActivateBlades(12,0,2,90,SHOT.WAVE);
-		ActivateBlades(8,0,2,90,SHOT.WAVE);
+		ActivateBlades(12,0,2,70,SHOT.WAVE);
+		ActivateBlades(8,0,2,70,SHOT.WAVE);
 	
 		var _spot = -1;
 		var _lastSpot = _spot;
-		for(var i = 3; i <= 8; i++) {
+		for(var i = 3; i <= 7; i++) {
 			while(_spot == _lastSpot) _spot = choose(1,2,3);
 			_lastSpot = _spot;
 			ActivateBlades(_spot,i,1,1,SHOT.TRIANGLE);

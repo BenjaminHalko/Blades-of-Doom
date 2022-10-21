@@ -100,8 +100,9 @@ function SpikeMove(_x,_y,_dir) constructor {
 			
 			var _angle = image_angle;
 			with(oPlayer) {
+				if !visible continue;
 				if sparkleTimer > 0 and point_in_circle(other.x,other.y,x,y,18) {
-					with(instance_create_depth(x,y,layer_get_depth(layer_get_id("Spikes"))-1,oSpikeDestroy)) image_angle = _angle;
+					with(instance_create_depth(other.x,other.y,layer_get_depth(layer_get_id("Spikes"))-1,oSpikeDestroy)) image_angle = _angle;
 					return 1;
 				} else if rectangle_in_circle(bbox_left,bbox_top,bbox_right,bbox_bottom,other.x,other.y,6) {
 					with(other) {

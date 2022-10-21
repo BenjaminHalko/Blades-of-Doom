@@ -70,9 +70,11 @@ timeColPercent = 0;
 timePulse = 0;
 heartPulse = [1,1];
 choice = 0;
-ini_open(SAVEFILE)
-audioVol = ini_read_real("audio","audio",0.7);
-ini_close();
+if !MOBILE {
+	ini_open(SAVEFILE)
+	audioVol = ini_read_real("audio","audio",0.7);
+	ini_close();
+} else audioVol = 0.7;
 audio_master_gain(audioVol);
 
 //Screen Shake

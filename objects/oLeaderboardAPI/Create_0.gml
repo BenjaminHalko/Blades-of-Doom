@@ -5,6 +5,7 @@ callback = undefined;
 maxScores = 5;
 scores = [];
 username = "";
+
 if global.online {
 	if OPERA {
 		try {
@@ -43,8 +44,8 @@ newRecord = false;
 flash = 0;
 
 scores = [];
+personalBest = 0;
 if !file_exists(SAVEFILE) {
-	personalBest = 0;
 	ini_open(SAVEFILE);
 	ini_write_real("score","score",0);
 	ini_close();
@@ -53,5 +54,3 @@ if !file_exists(SAVEFILE) {
 	personalBest = ini_read_real("score","score",0);
 	ini_close();
 }
-
-allowedChars = font_get_info(GuiFont).glyphs;

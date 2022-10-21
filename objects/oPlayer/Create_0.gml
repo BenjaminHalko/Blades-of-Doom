@@ -12,7 +12,7 @@ hsp_final = 0;
 vsp_final = 0;
 
 grv = 0.6;
-walkspd = 0.5;
+walkspd = 0.5+0.1*DELUXE;
 maxwalk = 2.3;
 jumpspd = -7-0.2*DELUXE;
 

@@ -21,7 +21,7 @@ if waiting == 0 and oGameManager.gameOver {
 			}
 			keyboard_virtual_hide();
 		} else if keyboard_lastkey != vk_nokey {
-			if (keyboard_lastkey == vk_backspace or variable_struct_exists(allowedChars,keyboard_lastchar)) and string_length(keyboard_string) <= 10 and (keyboard_lastkey != vk_space or string_length(scores[replacingScore].name) > 0) scores[replacingScore].name = keyboard_string;
+			if (keyboard_lastkey == vk_backspace or (ord(keyboard_lastchar) >= 32 and ord(keyboard_lastchar) <= 255)) and string_length(keyboard_string) <= 10 and (keyboard_lastkey != vk_space or string_length(scores[replacingScore].name) > 0) scores[replacingScore].name = keyboard_string;
 			keyboard_string = scores[replacingScore].name;
 			keyboard_lastkey = vk_nokey;
 		}
