@@ -44,7 +44,7 @@ if OPERA {
 	ds_map_destroy(_info);
 }
 
-global.online = os_is_network_connected();
+global.online = (network_resolve("lb.userdefined.io") != "");
 
 // Rendering
 global.resW = 480;

@@ -80,7 +80,7 @@ function SpikeMove(_x,_y,_dir) constructor {
 	flash = 0;
 	spikeIndex = -1;
 	onScreen = false;
-	spd = ((oGameManager.time/10)*0.25+6);
+	spd = ((oGameManager.time/10)*(0.25-0.1*DELUXE)+6);
 	minSpd = 4;
 	speed = max(minSpd,spd*GLOBALSPD);
 	direction = _dir;
