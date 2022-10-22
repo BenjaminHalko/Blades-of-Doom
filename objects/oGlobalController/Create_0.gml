@@ -9,7 +9,7 @@ randomize();
 #macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
 #macro LEADERBOARDID "1gsGigOfdp5eCKiv8xB1"
-#macro Deluxe:LEADERBOARDID "QIofOZQ6WndFPUtkVZhz"
+#macro Deluxe:LEADERBOARDID "QTRoPI4wjb8kmlgoYEqU"
 #macro CHALLENGEID "c159bba5-6093-46e2-a63c-e989b825dbd5"
 #macro SAVEFILE "save.ini"
 #macro MAXHEALTH 5
