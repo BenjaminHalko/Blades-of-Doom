@@ -3,7 +3,7 @@
 if !target.visible exit;
 
 // Inherit the parent event
-SpikeDamage(other.id);
+SpikeDamage(other.id,false,true);
 
 knockback = other.sparkleTimer == 0 ? 6 : 8;
 knockbackDir = point_direction(other.x,other.y,x,y);
