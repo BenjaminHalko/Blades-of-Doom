@@ -123,7 +123,7 @@ function SpikeMove(_x,_y,_dir) constructor {
 	}
 }
 
-function SpikeDamage(_player,_moving=false,_chasing=false) {
+function SpikeDamage(_player,_moving=false) {
 	if !_player.visible return 0;
 
 	if _player.sparkleTimer > 0 and _moving {
@@ -169,7 +169,7 @@ function SpikeDamage(_player,_moving=false,_chasing=false) {
 	
 	} else {
 		ScreenShake(3,5);
-		if _player.sparkleTimer > 0 and _chasing {
+		if _player.sparkleTimer > 0 {
 			audio_stop_sound(snSawDestroy);
 			audio_play_sound(snSawDestroy,0.3,false,1,0,1.2);	
 		}
