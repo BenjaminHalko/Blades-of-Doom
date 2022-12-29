@@ -17,7 +17,8 @@ if active and !_lastActive {
 
 activePercent = ApproachFade(activePercent,active,0.2,0.7);
 colPercent = ApproachFade(colPercent,active+0.001,0.015,0.8);
-var _col = make_color_hsv((Wave(55,70,2,colOffset)+color_get_hue(oGameManager.reverseSpikeColor))%255,colPercent*150,lerp(120,255,colPercent));
+var _pulse = (0.5+sin((oGlobalController.timeCol-6)/12*pi)/2)*oGlobalController.timeColPercent;
+var _col = make_color_hsv((Wave(55,70,2,colOffset)+color_get_hue(oGameManager.reverseSpikeColor))%255,colPercent*150,lerp(120+_pulse*85,255,colPercent));
 
 if heartPercent != 0 and DELUXE _col = merge_color(_col,make_color_hsv((255+Wave(-10,3,2,colOffset)+heartCol)%255,180,255),heartPercent);
 if pulse != 0 _col = merge_color(_col,make_color_hsv((color_get_hue(_col)+10)%255,255,255),pulse);

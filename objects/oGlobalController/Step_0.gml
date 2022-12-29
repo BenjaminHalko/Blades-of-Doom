@@ -78,7 +78,7 @@ if keyboard_check_pressed(vk_tab) or device_mouse_check_button_pressed(3,mb_left
 // Text Flash
 if oGameManager.time % 10 < 9 or oGameManager.gameOver {
 	timeColPercent = ApproachFade(timeColPercent,0,0.1,0.5);
-	timeCol = 0;
+	if timeColPercent == 0 timeCol = 0;
 } else {
 	timeColPercent = 1;
 	timeCol++;

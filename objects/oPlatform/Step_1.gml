@@ -15,13 +15,15 @@ if (yPos < INFO_HEIGHT/2) or (yPos > room_height+INFO_HEIGHT/2) {
 	
 	heartPercent = 0;
 	instance_destroy(heart);
-	if _notAtFullHealth and irandom(5) == 0 and !instance_exists(oHeartPickup) and !oGameManager.gameOver {
-		heart = instance_create_layer(x,0,layer,oHeartPickup);
-		heartCol = 0;
-	} else if DELUXE and _notInvincible and irandom(5) == 0 and oGameManager.specialItemWaitTime == 0 and !instance_exists(oSparklePickup) and !instance_exists(oSlowPickup) and !oGameManager.gameOver{
-		heart = instance_create_layer(x,0,layer,choose(oSparklePickup,oSlowPickup));
-		if heart.object_index == oSparklePickup heartCol = 35;
-		else heartCol = 165;
+	if oGameManager.time % 10 < 9 or !DELUXE {
+		if _notAtFullHealth and irandom(5) == 0 and !instance_exists(oHeartPickup) and !oGameManager.gameOver {
+			heart = instance_create_layer(x,0,layer,oHeartPickup);
+			heartCol = 0;
+		} else if DELUXE and _notInvincible and irandom(5) == 0 and oGameManager.specialItemWaitTime == 0 and !instance_exists(oSparklePickup) and !instance_exists(oSlowPickup) and !oGameManager.gameOver{
+			heart = instance_create_layer(x,0,layer,choose(oSparklePickup,oSlowPickup));
+			if heart.object_index == oSparklePickup heartCol = 35;
+			else heartCol = 165;
+		}
 	}
 }
 if (yPos < INFO_HEIGHT/2) yPos += dist;

@@ -2,6 +2,9 @@
   "resourceType": "GMMainOptions",
   "resourceVersion": "1.4",
   "name": "Main",
+  "ConfigValues": {
+    "Deluxe": {"option_gameguid":"e77948cf-2331-47dd-af0a-d9be9f7c625e",},
+  },
   "option_gameguid": "e77948cf-2331-47dd-af0a-d9be9f7c625e",
   "option_gameid": "0",
   "option_game_speed": 60,
