@@ -72,7 +72,10 @@ if title and oSpikeManager.doneCreating {
 
 if keyboard_check_pressed(vk_tab) or device_mouse_check_button_pressed(3,mb_left) {
 	oRender.disable = !oRender.disable;
-	application_surface_draw_enable(oRender.disable);		
+	application_surface_draw_enable(oRender.disable);
+	ini_open(SAVEFILE);
+	ini_write_real("graphics","bloomDisabled",oRender.disable);
+	ini_close();
 }
 
 // Text Flash

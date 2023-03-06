@@ -7,6 +7,10 @@ if waiting == 0 and oGameManager.gameOver {
 	for(var i = 0; i < gamepad_get_device_count(); i++) {
 		for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gamepadEnter = true;
 	}
+	if replacingScore != -1 and disableSendingScores {
+		scores[replacingScore].name = "PLAYER";
+		replacingScore = -1;
+	}
 	if replacingScore != -1 {
 		if MOBILE and mouse_check_button_pressed(mb_left) and !oGlobalController.leftScreen keyboard_virtual_show(kbv_type_ascii,kbv_returnkey_done,kbv_autocapitalize_words,true);
 		if keyboard_check_pressed(vk_enter) or _gamepadEnter or oGlobalController.jumpIsPressed {
@@ -30,6 +34,7 @@ if waiting == 0 and oGameManager.gameOver {
 			replacingScore = -1;
 			GameStart(oGameManager.players[1] != noone);
 			keyboard_virtual_hide();
+			disableSendingScores = true;
 		}
 	} else if keyboard_check_pressed(vk_enter) or _gamepadEnter or oGlobalController.jumpIsPressed GameStart(oGameManager.players[1] != noone);
 }

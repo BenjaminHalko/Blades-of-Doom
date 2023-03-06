@@ -1,8 +1,5 @@
 /// @desc Initialize Player
 
-// Player
-if(!variable_instance_exists(id,"player")) player = 0;
-
 // Movement
 hsp = 0;
 vsp = 0;

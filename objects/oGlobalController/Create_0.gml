@@ -56,7 +56,10 @@ instance_create_layer(0,0,"Render",oRender);
 global.usingGamepad = false;
 
 // Desktop Size
-if (DESKTOP) window_set_size(960,540);
+if (DESKTOP) {
+	window_set_size(960,540);
+	window_center();
+}
 
 //Create Game Manager
 instance_create_layer(0,0,layer,oGameManager);
