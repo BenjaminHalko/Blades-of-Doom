@@ -14,6 +14,7 @@
   },
   "defaultScriptType": 1,
   "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"~GooglePlayServices","folderPath":"folders/~GooglePlayServices.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"~GXC API","folderPath":"folders/~GXC API.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Http Manager","folderPath":"folders/~GXC API/Http Manager.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"~Leaderboard API","folderPath":"folders/~Leaderboard API.yy",},
@@ -33,7 +34,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.2.0.71",
+    "IDEVersion": "2023.2.1.75",
   },
   "resources": [
     {"id":{"name":"snSawDestroy","path":"sounds/snSawDestroy/snSawDestroy.yy",},},
@@ -80,6 +81,7 @@
     {"id":{"name":"snJump","path":"sounds/snJump/snJump.yy",},},
     {"id":{"name":"snSelect","path":"sounds/snSelect/snSelect.yy",},},
     {"id":{"name":"sSlowPickup","path":"sprites/sSlowPickup/sSlowPickup.yy",},},
+    {"id":{"name":"GooglePlayServices","path":"extensions/GooglePlayServices/GooglePlayServices.yy",},},
     {"id":{"name":"oHeartPickup","path":"objects/oHeartPickup/oHeartPickup.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"sPlatform","path":"sprites/sPlatform/sPlatform.yy",},},

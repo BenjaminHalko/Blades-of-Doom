@@ -12,6 +12,7 @@ randomize();
 #macro Deluxe:LEADERBOARDID "QTRoPI4wjb8kmlgoYEqU"
 #macro CHALLENGEID "c159bba5-6093-46e2-a63c-e989b825dbd5"
 #macro SAVEFILE "save.ini"
+#macro GOOGLEPLAYLEADERBOARDID "CgkIydiz_a0TEAIQAA"
 #macro MAXHEALTH 5
 #macro PLATFORM_SPACING 1.05
 #macro GLOBALSPD (1-(oGameManager.slowTimer > 0)*0.5)
@@ -37,6 +38,8 @@ global.mobileOperaGX = false;
 #macro OPERA (global.ostype == OS.OSOPERA)
 #macro DESKTOP (global.ostype == OS.OSDESKTOP)
 #macro MOBILE ((global.ostype == OS.OSMOBILE) or (os_type == os_android) or (global.mobileOperaGX))
+#macro GOOGLEPLAY (os_type == os_android)
+#macro OUTSIDELEADERBOARD (OPERA or GOOGLEPLAY)
 
 if OPERA {
 	var _info = os_get_info();
@@ -44,7 +47,7 @@ if OPERA {
 	ds_map_destroy(_info);
 }
 
-global.online = (network_resolve("lb.userdefined.io") != "");
+global.online = (OUTSIDELEADERBOARD or network_resolve("lb.userdefined.io") != "");
 
 // Rendering
 global.resW = 480;

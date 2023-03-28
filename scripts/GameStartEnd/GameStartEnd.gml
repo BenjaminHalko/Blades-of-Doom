@@ -130,26 +130,53 @@ function GameOver() {
 						name: ""
 					});
 					variable_struct_set(scores[i],"score",oGameManager.time);
-					if array_length(scores) > maxScores array_resize(scores,maxScores);
 					replacingScore = i;
 					break;
 				}
 			}
-			if MOBILE and replacingScore != -1 keyboard_virtual_show(kbv_type_ascii,kbv_returnkey_done,kbv_autocapitalize_words,true);
-			if (OPERA) {
+			
+			if (OUTSIDELEADERBOARD) {
 				if (replacingScore != -1) {
-					if is_string(username) scores[replacingScore].name = username;
+					if is_string(username) and username != "" scores[replacingScore].name = username;
 					else scores[replacingScore].name = "PLAYER";
+					
+					// Ranking
+					if (GOOGLEPLAY and scores[replacingScore].score >= personalBest) {
+						currentRank = string(replacingScore+1);
+						if currentRank == 1 currentRank += "st";
+						else if currentRank == 2 currentRank += "nd";
+						else if currentRank == 3 currentRank += "rd";
+						else currentRank += "th";
+						currentRank += " Place";
+					}
+					
+					// Remove duplicate names
+					for(var i = 0; i < min(array_length(scores),maxScores); i++) {
+						if i == replacingScore continue;
+						if scores[i].name == scores[replacingScore].name {
+							if i < replacingScore array_delete(scores,replacingScore,1);
+							else array_delete(scores,i,1);
+							break;
+						}
+					}
+					
 					replacingScore = -1;
 				}
-				try {
+				
+				if (OPERA) {
 					try {
-						gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
-					} catch(_error) {
-						show_debug_message(_error);
+						try {
+							gxc_challenge_submit_score(oGameManager.time*1000,undefined,{challengeId: CHALLENGEID});
+						} catch(_error) {
+							show_debug_message(_error);
+						}
 					}
+				} else {
+					GooglePlayServices_Leaderboard_SubmitScore(GOOGLEPLAYLEADERBOARDID,oGameManager.time*1000,"");	
 				}
-			}
+			} else if MOBILE and replacingScore != -1 keyboard_virtual_show(kbv_type_ascii,kbv_returnkey_done,kbv_autocapitalize_words,true);
+			
+			if array_length(scores) > maxScores array_resize(scores,maxScores);
 		}
 	}
 }

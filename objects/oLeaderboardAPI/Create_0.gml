@@ -33,6 +33,9 @@ if global.online {
 		} catch(_error) {
 			show_debug_message(_error);
 		}
+	} else if (GOOGLEPLAY) {
+		GooglePlayServices_Player_Current();
+		GooglePlayServices_Leaderboard_LoadTopScores(GOOGLEPLAYLEADERBOARDID,Leaderboard_TIME_SPAN_ALL_TIME, Leaderboard_COLLECTION_PUBLIC, 5, true);
 	} else LeaderboardGet(maxScores,false,LEADERBOARDID);
 }
 
@@ -45,6 +48,7 @@ flash = 0;
 
 scores = [];
 personalBest = 0;
+currentRank = "";
 if !file_exists(SAVEFILE) {
 	ini_open(SAVEFILE);
 	ini_write_real("score","score",0);

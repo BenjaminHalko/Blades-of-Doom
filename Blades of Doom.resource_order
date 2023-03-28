@@ -1,5 +1,7 @@
 {
-  "FolderOrderSettings": [],
+  "FolderOrderSettings": [
+    {"name":"~GooglePlayServices","order":1,"path":"folders/~GooglePlayServices.yy",},
+  ],
   "ResourceOrderSettings": [
     {"name":"snSawDestroy","order":6,"path":"sounds/snSawDestroy/snSawDestroy.yy",},
     {"name":"GameStartEnd","order":8,"path":"scripts/GameStartEnd/GameStartEnd.yy",},
