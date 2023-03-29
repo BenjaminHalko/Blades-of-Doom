@@ -33,12 +33,13 @@ else if(os_type == os_android) global.ostype = OS.OSMOBILE;
 else global.ostype = OS.OSDESKTOP;
 
 global.mobileOperaGX = false;
+global.googlePlayIsAvailable = GooglePlayServices_IsAvailable();
 
 #macro BROWSER (global.ostype == OS.OSBROWSER)
 #macro OPERA (global.ostype == OS.OSOPERA)
 #macro DESKTOP (global.ostype == OS.OSDESKTOP)
 #macro MOBILE ((global.ostype == OS.OSMOBILE) or (os_type == os_android) or (global.mobileOperaGX))
-#macro GOOGLEPLAY (os_type == os_android)
+#macro GOOGLEPLAY (os_type == os_android and global.googlePlayIsAvailable)
 #macro OUTSIDELEADERBOARD (OPERA or GOOGLEPLAY)
 
 if OPERA {

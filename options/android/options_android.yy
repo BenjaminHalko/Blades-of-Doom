@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "Android",
   "ConfigValues": {
-    "Deluxe": {"option_android_orient_landscape_flipped":"true","option_android_orient_portrait":"false","option_android_build_tools":"","option_android_support_lib":"33.0.0","option_android_target_sdk":"33","option_android_compile_sdk":"33","option_android_minimum_sdk":"19","option_android_splash_screens_landscape":"splash/landscape.png","option_android_permission_internet":"true","option_android_tv_banner":"tv_banner.png","option_android_arch_x86_64":"false","option_android_arch_armv7":"false",},
+    "Deluxe": {"option_android_orient_landscape_flipped":"true","option_android_orient_portrait":"false","option_android_build_tools":"","option_android_support_lib":"33.0.0","option_android_target_sdk":"33","option_android_compile_sdk":"33","option_android_minimum_sdk":"19","option_android_splash_screens_landscape":"splash/landscape.png","option_android_permission_internet":"true","option_android_tv_banner":"tv_banner.png","option_android_arch_x86_64":"false","option_android_arch_armv7":"true","option_android_arch_arm64":"true",},
   },
   "option_android_application_tag_inject": "",
   "option_android_arch_arm64": true,

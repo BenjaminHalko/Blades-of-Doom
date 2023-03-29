@@ -5,12 +5,12 @@ if displayPercent == 0 exit;
 var _extraSize = 0;
 if(OUTSIDELEADERBOARD and global.online) _extraSize = 20;
 
-var _y = 50+40*(!global.online);
+var _y = 50+40*(!global.online)-10*(global.online and MOBILE);
 var _x = lerp(-220-_extraSize,20,displayPercent);
 
 draw_set_color(c_black);
 draw_set_alpha(0.8);
-draw_roundrect(_x,_y,_x+162+_extraSize,_y+190-80*(!global.online),false);
+draw_roundrect(_x,_y,_x+162+_extraSize,_y+190-80*(!global.online)-32*(global.online and MOBILE),false);
 draw_set_alpha(1);
 
 draw_set_font(GuiFont);
@@ -18,7 +18,12 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-draw_roundrect(_x,_y,_x+162+_extraSize,_y+190-80*(!global.online),true);
+draw_roundrect(_x,_y,_x+162+_extraSize,_y+190-80*(!global.online)-32*(global.online and MOBILE),true);
+
+if (global.online and MOBILE) {
+	_y -= 5;	
+}
+
 if global.online {
 	draw_text(_x+10,_y+20,"LEADERBOARD:");
 
@@ -49,6 +54,7 @@ if global.online {
 			} else {
 				draw_text(_x+10,_y+40+16*i,scores[i].name);
 			}
+			draw_set_color(c_white);
 			var _score = variable_struct_get(scores[i],"score");
 			draw_text(_x+100+_extraSize,_y+40+16*i,string(floor(_score div 60))+":"+string_replace(string_format(_score % 60,2,2)," ","0"));
 		}
@@ -70,12 +76,14 @@ if GOOGLEPLAY {
 
 if newRecord {
 	draw_set_color(c_lime);
-	if GOOGLEPLAY and global.online draw_text(_x+100+_extraSize,_y+144,"NEW PB!");
+	if GOOGLEPLAY and global.online draw_text(_x+100+_extraSize,_y+20,"NEW PB!");
 	else draw_text(_x+10,_y+144,"NEW PB!");
 }
 
-draw_set_color(c_gray);
-draw_text(_x+40+_extraSize/2,_y+174,"PRESS ENTER");
+if !MOBILE and false {
+	draw_set_color(c_gray);
+	draw_text(_x+40+_extraSize/2,_y+174,"PRESS ENTER");
+}
 
 if replacingScore != -1 and MOBILE and !OUTSIDELEADERBOARD {
 	var _extraHeight = 46;

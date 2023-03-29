@@ -14,8 +14,8 @@ var _keyRight = false;
 var _keyJump = false;
 if hp != 0 {
 	for(var i = 0; i < gamepad_get_device_count(); i++) {
-		if(gamepad_button_check(i,gp_padl) or gamepad_axis_value(i,gp_axislh) <= -0.5) _gpLeft = true;
-		if(gamepad_button_check(i,gp_padr) or gamepad_axis_value(i,gp_axislh) >= 0.5) _gpRight = true;
+		if(gamepad_button_check(i,gp_padl) or gamepad_axis_value(i,gp_axislh) <= -0.05) _gpLeft = true;
+		if(gamepad_button_check(i,gp_padr) or gamepad_axis_value(i,gp_axislh) >= 0.05) _gpRight = true;
 		for(var j = gp_face1; j <= gp_face4; j++) if(gamepad_button_check_pressed(i,j)) _gpJump = true;
 	}
 
@@ -39,13 +39,10 @@ if hp != 0 {
 		_keyJump = keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up);
 	}
 } else {
-	deathTimer--;
-	if deathTimer <= 0 or true {
-		with(instance_create_layer(x,y,layer,oPlayerExplode)) color = other.image_blend;
-		visible = false;
-		x = -100;
-		exit;
-	}
+	with(instance_create_layer(x,y,layer,oPlayerExplode)) color = other.image_blend;
+	visible = false;
+	x = -100;
+	exit;
 }
 
 if(_keyLeft or _keyRight) and !oGameManager.gameStarted {
