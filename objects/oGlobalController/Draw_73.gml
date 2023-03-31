@@ -22,6 +22,10 @@ if !oGameManager.gameOver or oGameManager.players[1] == noone {
 	draw_text(room_width/2,16,"WINS");
 }
 
+//temp
+draw_set_halign(fa_left);
+draw_text(5,5,string(oGameManager.jumpCount));
+
 var _health;
 
 for(var j = 0; j < 2; j++) {

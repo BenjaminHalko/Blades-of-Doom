@@ -65,6 +65,14 @@ if((canJump-- > 0) && jumpTimer > 0) {
 	canJump = 0;
 	jumpTimer = 0;
 	audio_play_sound(snJump,1,false);
+	
+	//Google Play
+	if GOOGLEPLAY {
+		with(oGameManager) {
+			jumpCount++;
+			if jumpCount == 200 GooglePlayServices_Achievements_Unlock(jumpAchievementID);
+		}
+	}
 }
 
 jumpTimer--;

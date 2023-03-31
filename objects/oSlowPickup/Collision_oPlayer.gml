@@ -1,5 +1,12 @@
 /// @desc
 
+if GOOGLEPLAY {
+	with(oGameManager) {
+		powerUpCount++;
+		if powerUpCount == 10 GooglePlayServices_Achievements_Unlock(powerUpAchievementID);
+	}
+}
+
 oGameManager.slowTimer = 10*60;
 oGameManager.specialItemWaitTime = oGameManager.slowTimer + 10*60;
 ScreenShake(6,5);

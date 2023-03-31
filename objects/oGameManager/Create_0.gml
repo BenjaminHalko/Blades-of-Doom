@@ -51,3 +51,25 @@ slowTimer = 0;
 pitch = 1;
 
 sawList = ds_list_create();
+
+//Google Play
+achievementIDs = [
+"CgkIydiz_a0TEAIQAg",
+"CgkIydiz_a0TEAIQBg",
+"CgkIydiz_a0TEAIQBw",
+"CgkIydiz_a0TEAIQCA",
+"CgkIydiz_a0TEAIQBA"];
+
+notHit = true;
+noHitAchievementID = "CgkIydiz_a0TEAIQCw";
+
+heartCount = 0;
+heartAchievementID = "CgkIydiz_a0TEAIQBQ";
+
+powerUpCount = 0;
+powerUpAchievementID = "CgkIydiz_a0TEAIQAw";
+
+jumpCount = 0;
+jumpAchievementID = "CgkIydiz_a0TEAIQCg";
+
+bladeAttackAchievementID = "CgkIydiz_a0TEAIQCQ";

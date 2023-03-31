@@ -10,3 +10,5 @@ knockbackDir = 0;
 
 dir = 0;
 spd = 0.5-0.15*DELUXE;
+
+attacked = false;

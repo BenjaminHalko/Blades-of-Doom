@@ -1,5 +1,12 @@
 /// @desc
 
+if GOOGLEPLAY {
+	with(oGameManager) {
+		powerUpCount++;
+		if powerUpCount == 10 GooglePlayServices_Achievements_Unlock(powerUpAchievementID);
+	}
+}
+
 other.sparkleTimer = 10*60;
 oGameManager.specialItemWaitTime = other.sparkleTimer + 10*60;
 var _id = other.id;

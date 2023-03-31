@@ -8,6 +8,14 @@ if (gameStarted and !gameOver) {
 	specialItemWaitTime = max(0,specialItemWaitTime-1);
 	time += 1/60;
 	if oGameManager.time % 10 < lastTime {
+		
+		// Google Play Achievements
+		if time % 60 < 10 and time >= 60 and time < 60 * 6 and GOOGLEPLAY {
+			GooglePlayServices_Achievements_Unlock(achievementIDs[(time div 60) - 1]);
+			
+			if time < 60 * 2 and noHit GooglePlayServices_Achievements_Unlock(noHitAchievementID);
+		}
+		
 		oGlobalController.timePulse = 1;
 		lastSpikeColor = spikeColor;
 		newSpikeColor = make_color_hsv(Wrap(color_get_hue(newSpikeColor)+random_range(20,70),0,255),255,255);

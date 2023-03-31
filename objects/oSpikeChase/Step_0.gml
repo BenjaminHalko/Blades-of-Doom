@@ -13,6 +13,11 @@ if !target.visible {
 	x += lengthdir_x(knockback,knockbackDir);
 	y += lengthdir_y(knockback,knockbackDir);
 	knockback = Approach(knockback,0,0.3);
+	if knockback == 0 attacked = false;
+	else if attacked and !point_in_rectangle(x,y,0,INFO_HEIGHT,room_width,room_height) and GOOGLEPLAY {
+		GooglePlayServices_Achievements_Unlock(oGameManager.bladeAttackAchievementID);
+		attacked = false;
+	}
 } else {
 	dir = ApproachCircleEase(dir,point_direction(x,y,target.x,target.y),3,0.8);
 	x += lengthdir_x(spd,dir);

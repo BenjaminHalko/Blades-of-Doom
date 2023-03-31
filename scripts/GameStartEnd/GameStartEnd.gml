@@ -5,6 +5,10 @@ function GameStart(_2players) {
 	instance_destroy(oSlowPickup);
 	instance_destroy(oSpikeWarning);
 	with(oGameManager) {
+		notHit = true;
+		heartCount = 0;
+		powerUpCount = 0;
+		jumpCount = 0;
 		time = 0;
 		gameStarted = false;
 		gameOver = false;
