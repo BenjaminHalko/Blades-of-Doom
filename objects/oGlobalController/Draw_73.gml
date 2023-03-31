@@ -74,7 +74,8 @@ if title and oSpikeManager.doneCreating {
 	}
 }
 
-if(MOBILE and oSpikeManager.doneCreating) {
+if(MOBILE and oSpikeManager.doneCreating and onScreenAlpha != 0) {
+	draw_set_alpha(onScreenAlpha);
 	draw_sprite_ext(sScreenButtons,0,leftScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
 	draw_sprite_ext(sScreenButtons,0,rightScreenX+1,screenButtonY+1,-1,1,0,c_black,0.4);
 	draw_sprite_ext(sScreenButtons,2,jumpScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
@@ -82,4 +83,5 @@ if(MOBILE and oSpikeManager.doneCreating) {
 	draw_sprite(sScreenButtons,leftScreen,leftScreenX,screenButtonY);
 	draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
 	draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
+	draw_set_alpha(1);
 }

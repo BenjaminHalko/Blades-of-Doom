@@ -101,6 +101,9 @@ leftScreenX = 40;
 rightScreenX = leftScreenX+48;
 jumpScreenX = room_width-leftScreenX;
 
+usingOnScreenButtons = 1;
+onScreenAlpha = 1;
+
 //Music
 music = audio_play_sound(mMusic,2,true);
 

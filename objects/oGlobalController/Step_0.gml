@@ -89,6 +89,8 @@ if oGameManager.time % 10 < 9 or oGameManager.gameOver {
 
 //MOBILE Controls
 if MOBILE {
+	if global.usingGamepad or keyboard_check_pressed(vk_anykey) usingOnScreenButtons = false;
+	onScreenAlpha = Approach(onScreenAlpha,usingOnScreenButtons,0.1);
 	var _jumpHeld = jumpScreen;
 	var _top = screenButtonY-24;
 	var _bottom = screenButtonY+24;
@@ -99,6 +101,7 @@ if MOBILE {
 	
 	for(var i = 0; i < 5; i++) {
 		if(!device_mouse_check_button(i, mb_left) and !device_mouse_check_button(i, mb_right)) continue;
+		usingOnScreenButtons = true;
 		
 		var _px = device_mouse_x(i);
 		var _py = device_mouse_y(i);
