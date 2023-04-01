@@ -30,8 +30,8 @@ if(async_load[?"type"] == "GooglePlayServices_Leaderboard_LoadPlayerCenteredScor
 		}
 		currentRank = string(_data[0].rank);
 		if (currentRank % 10 == 1 and currentRank != 11) currentRank += "st";
-		else if (currentRank % 10 == 1 and currentRank != 11) currentRank += "nd";
-		else if (currentRank % 10 == 1 and currentRank != 11) currentRank += "rd";
+		else if (currentRank % 10 == 2 and currentRank != 11) currentRank += "nd";
+		else if (currentRank % 10 == 3 and currentRank != 11) currentRank += "rd";
 		else currentRank += "th";
 		currentRank += " Place";
 	}

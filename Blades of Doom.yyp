@@ -34,12 +34,13 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.2.1.75",
+    "IDEVersion": "2023.200.0.299",
   },
   "resources": [
     {"id":{"name":"snSawDestroy","path":"sounds/snSawDestroy/snSawDestroy.yy",},},
     {"id":{"name":"GameStartEnd","path":"scripts/GameStartEnd/GameStartEnd.yy",},},
     {"id":{"name":"gxc_api","path":"scripts/gxc_api/gxc_api.yy",},},
+    {"id":{"name":"sTopButtons","path":"sprites/sTopButtons/sTopButtons.yy",},},
     {"id":{"name":"oSlowPickup","path":"objects/oSlowPickup/oSlowPickup.yy",},},
     {"id":{"name":"sHeart","path":"sprites/sHeart/sHeart.yy",},},
     {"id":{"name":"Spikes","path":"scripts/Spikes/Spikes.yy",},},

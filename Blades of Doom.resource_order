@@ -6,6 +6,7 @@
     {"name":"snSawDestroy","order":6,"path":"sounds/snSawDestroy/snSawDestroy.yy",},
     {"name":"GameStartEnd","order":8,"path":"scripts/GameStartEnd/GameStartEnd.yy",},
     {"name":"gxc_api","order":2,"path":"scripts/gxc_api/gxc_api.yy",},
+    {"name":"sTopButtons","order":1,"path":"sprites/sTopButtons/sTopButtons.yy",},
     {"name":"oSlowPickup","order":2,"path":"objects/oSlowPickup/oSlowPickup.yy",},
     {"name":"sHeart","order":1,"path":"sprites/sHeart/sHeart.yy",},
     {"name":"Spikes","order":10,"path":"scripts/Spikes/Spikes.yy",},

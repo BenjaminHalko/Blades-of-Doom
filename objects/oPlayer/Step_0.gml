@@ -67,7 +67,7 @@ if((canJump-- > 0) && jumpTimer > 0) {
 	audio_play_sound(snJump,1,false);
 	
 	//Google Play
-	if GOOGLEPLAY {
+	if GOOGLEPLAY and oGameManager.gameStarted {
 		with(oGameManager) {
 			jumpCount++;
 			if jumpCount == 200 GooglePlayServices_Achievements_Unlock(jumpAchievementID);

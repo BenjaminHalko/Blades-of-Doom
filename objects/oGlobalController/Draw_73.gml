@@ -22,10 +22,6 @@ if !oGameManager.gameOver or oGameManager.players[1] == noone {
 	draw_text(room_width/2,16,"WINS");
 }
 
-//temp
-draw_set_halign(fa_left);
-draw_text(5,5,string(oGameManager.jumpCount));
-
 var _health;
 
 for(var j = 0; j < 2; j++) {
@@ -74,14 +70,22 @@ if title and oSpikeManager.doneCreating {
 	}
 }
 
-if(MOBILE and oSpikeManager.doneCreating and onScreenAlpha != 0) {
-	draw_set_alpha(onScreenAlpha);
-	draw_sprite_ext(sScreenButtons,0,leftScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
-	draw_sprite_ext(sScreenButtons,0,rightScreenX+1,screenButtonY+1,-1,1,0,c_black,0.4);
-	draw_sprite_ext(sScreenButtons,2,jumpScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
+if(MOBILE and oSpikeManager.doneCreating) {
 	
-	draw_sprite(sScreenButtons,leftScreen,leftScreenX,screenButtonY);
-	draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
-	draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
+	if onScreenAlpha != 0 {
+		draw_set_alpha(onScreenAlpha);
+		draw_sprite_ext(sScreenButtons,0,leftScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
+		draw_sprite_ext(sScreenButtons,0,rightScreenX+1,screenButtonY+1,-1,1,0,c_black,0.4);
+		draw_sprite_ext(sScreenButtons,2,jumpScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
+	
+		draw_sprite(sScreenButtons,leftScreen,leftScreenX,screenButtonY);
+		draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
+		draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
+		draw_set_alpha(1);
+	}
+	
+	draw_set_alpha(0.3);
+	draw_sprite(sTopButtons,0+title*2,32,3);
+	draw_sprite(sTopButtons,1+title*2,room_width-32-20,3);
 	draw_set_alpha(1);
 }

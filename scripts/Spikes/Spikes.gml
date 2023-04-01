@@ -179,6 +179,6 @@ function SpikeDamage(_player,_moving=false) {
 		}
 	}
 	flash = 1;
-	oGameManager.noHit = false;
+	oGameManager.notHit = false;
 	return 0;
 }

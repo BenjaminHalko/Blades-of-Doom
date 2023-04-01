@@ -4,6 +4,7 @@ function GameStart(_2players) {
 	instance_destroy(oSparklePickup);
 	instance_destroy(oSlowPickup);
 	instance_destroy(oSpikeWarning);
+	audio_stop_sound(snSparkle);
 	with(oGameManager) {
 		notHit = true;
 		heartCount = 0;
@@ -66,6 +67,7 @@ function GameStart(_2players) {
 		noSpikeHit = false;
 		noPlatform = 0;
 		sparkleTimer = 0;
+		invicibility = 0;
 	}
 	
 	with(oSpikeManager) {

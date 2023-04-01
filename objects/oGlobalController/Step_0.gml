@@ -62,7 +62,7 @@ if title and oSpikeManager.doneCreating {
 			ini_write_real("audio","audio",audioVol);
 			ini_close();
 		}
-	} else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and MOBILE) or _gamepadPressed) GameStart(choice);
+	} else if(keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or (mouse_check_button_pressed(mb_left) and mouse_y > INFO_HEIGHT and MOBILE) or _gamepadPressed) GameStart(choice);
 	
 	if titlePercent != 1 {
 		titlePercent = Approach(titlePercent,1,0.1);
@@ -89,7 +89,7 @@ if oGameManager.time % 10 < 9 or oGameManager.gameOver {
 
 //MOBILE Controls
 if MOBILE {
-	if global.usingGamepad or keyboard_check_pressed(vk_anykey) usingOnScreenButtons = false;
+	if global.usingGamepad or (keyboard_check_pressed(vk_anykey) and !keyboard_check_pressed(vk_backspace)) usingOnScreenButtons = false;
 	onScreenAlpha = Approach(onScreenAlpha,usingOnScreenButtons,0.1);
 	var _jumpHeld = jumpScreen;
 	var _top = screenButtonY-24;
@@ -115,6 +115,23 @@ if MOBILE {
 	}
 	
 	if(keyboard_check_pressed(vk_backspace) and !BROWSER and title) game_end(); 
+	
+	
+	if oSpikeManager.doneCreating and mouse_check_button_pressed(mb_left) {
+			if point_in_rectangle(mouse_x,mouse_y,0,0,room_width/4,INFO_HEIGHT) {
+				if title
+					GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);
+				else
+					BackToMenu();
+			}
+			if point_in_rectangle(mouse_x,mouse_y,480-room_width/4,0,room_width,INFO_HEIGHT) {
+				if title
+					GooglePlayServices_Achievements_Show();
+				else {
+					GameStart(false);
+				}
+			}
+	}
 }
 
 if !title and (keyboard_check_pressed(vk_backspace) or _gamepadEsc) and oLeaderboardAPI.replacingScore == -1 {
