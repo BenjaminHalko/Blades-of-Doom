@@ -14,6 +14,7 @@ draw_text(room_width/4*3,5,"PLAYER 2");
 draw_set_color(c_white);
 if !oGameManager.gameOver or oGameManager.players[1] == noone {
 	if DELUXE draw_set_color(merge_color(c_white,c_red,(0.5+sin((timeCol-6)/12*pi)/2)*timeColPercent));
+	if oGameManager.notHit draw_set_color(c_yellow);
 	draw_text(room_width/2,5,"TIME");
 	if timePulse == 0 draw_text(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
 	else draw_text_transformed(room_width/2,16,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"),timePulse*0.5+1,timePulse*0.5+1,0);
@@ -79,7 +80,7 @@ if(MOBILE and oSpikeManager.doneCreating) {
 		draw_sprite_ext(sScreenButtons,2,jumpScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
 	
 		draw_sprite(sScreenButtons,leftScreen,leftScreenX,screenButtonY);
-		draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,1);
+		draw_sprite_ext(sScreenButtons,rightScreen,rightScreenX,screenButtonY,-1,1,0,c_white,onScreenAlpha);
 		draw_sprite(sScreenButtons,2+jumpScreen,jumpScreenX,screenButtonY);
 		draw_set_alpha(1);
 	}
