@@ -11,8 +11,8 @@ if (gameStarted and !gameOver) {
 		
 		// Google Play Achievements
 		if time % 60 < 10 and time >= 60 and time < 60 * 6 and GOOGLEPLAY {
-			GooglePlayServices_Achievements_Unlock(achievementIDs[(time div 60) - 1]);
 			if time < 60 * 2 and notHit GooglePlayServices_Achievements_Unlock(noHitAchievementID);
+			else GooglePlayServices_Achievements_Unlock(achievementIDs[(time div 60) - 1]);
 		}
 		
 		oGlobalController.timePulse = 1;
