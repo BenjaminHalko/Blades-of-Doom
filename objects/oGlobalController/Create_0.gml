@@ -104,6 +104,9 @@ jumpScreenX = room_width-leftScreenX;
 usingOnScreenButtons = 1;
 onScreenAlpha = 1;
 
+// Auto Detect Bloom Too Much
+autoDetectCounter = 0;
+
 //Music
 music = audio_play_sound(mMusic,2,true);
 
