@@ -179,6 +179,6 @@ function SpikeDamage(_player,_moving=false) {
 		}
 	}
 	flash = 1;
-	oGameManager.notHit = false;
+	if _player.sparkleTimer == 0 oGameManager.notHit = false;
 	return 0;
 }
