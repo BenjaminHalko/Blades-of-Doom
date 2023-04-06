@@ -143,12 +143,13 @@ if keyboard_check_pressed(vk_escape) and DESKTOP game_end();
 // Lag Detector
 if oRender.autoDetect {
 	if fps < 45 {
-		if ++autoDetectCounter >= 3 * 60 {
+		if ++autoDetectCounter >= 60 * 2 {
 			oRender.autoDetect = false;
 			oRender.disable = true;
+			application_surface_draw_enable(true);
 			ini_open(SAVEFILE);
 			ini_write_real("graphics","bloomDisabled",true);
 			ini_close();
 		}
-	}
+	} else autoDetectCounter = 0;
 }

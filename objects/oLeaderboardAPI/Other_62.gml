@@ -5,6 +5,3 @@ if async_load[? "id"] == httpID {
 		scores = json_parse(async_load[? "result"]);
 	}
 }
-
-// Google Play
-

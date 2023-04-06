@@ -71,7 +71,6 @@ if title and oSpikeManager.doneCreating {
 }
 
 if(MOBILE and oSpikeManager.doneCreating) {
-	
 	if onScreenAlpha != 0 {
 		draw_set_alpha(onScreenAlpha);
 		draw_sprite_ext(sScreenButtons,0,leftScreenX+1,screenButtonY+1,1,1,0,c_black,0.4);
