@@ -12,7 +12,7 @@ randomize();
 #macro Deluxe:LEADERBOARDID "QTRoPI4wjb8kmlgoYEqU"
 #macro CHALLENGEID "c159bba5-6093-46e2-a63c-e989b825dbd5"
 #macro SAVEFILE "save.ini"
-#macro GOOGLEPLAYLEADERBOARDID "CgkIydiz_a0TEAIQAA"
+#macro GOOGLEPLAYLEADERBOARDID "CgkIlMeFs6UJEAIQCw"
 #macro MAXHEALTH 5
 #macro PLATFORM_SPACING 1.05
 #macro GLOBALSPD (1-(oGameManager.slowTimer > 0)*0.5)

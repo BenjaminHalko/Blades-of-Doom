@@ -54,22 +54,22 @@ sawList = ds_list_create();
 
 //Google Play
 achievementIDs = [
-"CgkIydiz_a0TEAIQAg",
-"CgkIydiz_a0TEAIQBg",
-"CgkIydiz_a0TEAIQBw",
-"CgkIydiz_a0TEAIQCA",
-"CgkIydiz_a0TEAIQBA"];
+"CgkIlMeFs6UJEAIQAQ",
+"CgkIlMeFs6UJEAIQAg",
+"CgkIlMeFs6UJEAIQAw",
+"CgkIlMeFs6UJEAIQBA",
+"CgkIlMeFs6UJEAIQBQ"];
 
 notHit = true;
-noHitAchievementID = "CgkIydiz_a0TEAIQCw";
+noHitAchievementID = "CgkIlMeFs6UJEAIQCg";
 
 heartCount = 0;
-heartAchievementID = "CgkIydiz_a0TEAIQBQ";
+heartAchievementID = "CgkIlMeFs6UJEAIQBw";
 
 powerUpCount = 0;
-powerUpAchievementID = "CgkIydiz_a0TEAIQAw";
+powerUpAchievementID = "CgkIlMeFs6UJEAIQCA";
 
 jumpCount = 0;
-jumpAchievementID = "CgkIydiz_a0TEAIQCg";
+jumpAchievementID = "CgkIlMeFs6UJEAIQBg";
 
-bladeAttackAchievementID = "CgkIydiz_a0TEAIQCQ";
+bladeAttackAchievementID = "CgkIlMeFs6UJEAIQCQ";
