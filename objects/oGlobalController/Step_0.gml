@@ -87,11 +87,6 @@ if oGameManager.time % 10 < 9 or oGameManager.gameOver {
 	timeCol++;
 }
 
-
-for (var i = 2; i < 256; i++) if (keyboard_check(i)) {
-	show_message_async(i);
-}
-
 //MOBILE Controls
 if MOBILE {
 	if global.usingGamepad or keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_enter) usingOnScreenButtons = false;
