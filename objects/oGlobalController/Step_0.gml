@@ -87,9 +87,14 @@ if oGameManager.time % 10 < 9 or oGameManager.gameOver {
 	timeCol++;
 }
 
+
+for (var i = 2; i < 256; i++) if (keyboard_check(i)) {
+	show_message_async(i);
+}
+
 //MOBILE Controls
 if MOBILE {
-	if global.usingGamepad or (keyboard_check_pressed(vk_anykey) and !keyboard_check_pressed(vk_backspace)) usingOnScreenButtons = false;
+	if global.usingGamepad or keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_shift) or keyboard_check_pressed(vk_control) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_enter) usingOnScreenButtons = false;
 	onScreenAlpha = Approach(onScreenAlpha,usingOnScreenButtons,0.1);
 	var _jumpHeld = jumpScreen;
 	var _top = screenButtonY-24;
@@ -142,13 +147,20 @@ if keyboard_check_pressed(vk_escape) and DESKTOP game_end();
 
 // Lag Detector
 if oRender.autoDetect {
-	if fps < 45 {
-		if ++autoDetectCounter >= 60 * 2 {
+	if fps < 45 and autoDetectCounter <= 0 {
+		if --autoDetectCounter <= -60 * 2 {
 			oRender.autoDetect = false;
 			oRender.disable = true;
 			application_surface_draw_enable(true);
 			ini_open(SAVEFILE);
 			ini_write_real("graphics","bloomDisabled",true);
+			ini_close();
+		}
+	} else if fps > 58 and autoDetectCounter >= 0 {
+		if ++autoDetectCounter >= 60 * 3 {
+			oRender.autoDetect = false;
+			ini_open(SAVEFILE);
+			ini_write_real("graphics","bloomDisabled",false);
 			ini_close();
 		}
 	} else autoDetectCounter = 0;
