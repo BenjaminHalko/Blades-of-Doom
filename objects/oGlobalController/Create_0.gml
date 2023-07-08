@@ -34,6 +34,7 @@ else global.ostype = OS.OSDESKTOP;
 
 global.mobileOperaGX = false;
 global.googlePlayIsAvailable = GooglePlayServices_IsAvailable();
+global.hasGooglePlayAccount = false;
 
 #macro BROWSER (global.ostype == OS.OSBROWSER)
 #macro OPERA (global.ostype == OS.OSOPERA)

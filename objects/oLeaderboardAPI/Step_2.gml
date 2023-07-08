@@ -49,5 +49,10 @@ else {
 flash = ApproachFade(flash,0,0.1,0.8);
 
 if displayPercent > 0.9 and mouse_check_button_pressed(mb_left) and point_in_rectangle(mouse_x,mouse_y,20,40,202,198) and GOOGLEPLAY {
-	GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);	
+	if global.hasGooglePlayAccount {
+		GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);
+	} else {
+		oLeaderboardAPI.googlePlayQueuedFunction = "Leaderboard";
+		GooglePlayServices_SignIn();
+	}
 }

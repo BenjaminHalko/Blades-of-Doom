@@ -123,21 +123,23 @@ function GameOver() {
 			ini_close();
 		} else newRecord = false;
 		if global.online {
-			for(var i = 0; i < min(array_length(scores)+1,maxScores); i++) {
-				if i == array_length(scores) {
-					array_insert(scores,i,{
-						name: ""
-					});
-					variable_struct_set(scores[i],"score",oGameManager.time);
-					replacingScore = i;
-					break;
-				} else if oGameManager.time > scores[i].score {
-					array_insert(scores,i,{
-						name: ""
-					});
-					variable_struct_set(scores[i],"score",oGameManager.time);
-					replacingScore = i;
-					break;
+			if !GOOGLEPLAY or global.hasGooglePlayAccount {
+				for(var i = 0; i < min(array_length(scores)+1,maxScores); i++) {
+					if i == array_length(scores) {
+						array_insert(scores,i,{
+							name: ""
+						});
+						variable_struct_set(scores[i],"score",oGameManager.time);
+						replacingScore = i;
+						break;
+					} else if oGameManager.time > scores[i].score {
+						array_insert(scores,i,{
+							name: ""
+						});
+						variable_struct_set(scores[i],"score",oGameManager.time);
+						replacingScore = i;
+						break;
+					}
 				}
 			}
 			

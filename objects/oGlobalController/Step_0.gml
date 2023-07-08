@@ -119,15 +119,26 @@ if MOBILE {
 	
 	if oSpikeManager.doneCreating and mouse_check_button_pressed(mb_left) {
 			if point_in_rectangle(mouse_x,mouse_y,0,0,room_width/4,INFO_HEIGHT) {
-				if title
-					GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);
-				else
+				if title {
+					if global.hasGooglePlayAccount {
+						GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);
+					} else {
+						oLeaderboardAPI.googlePlayQueuedFunction = "Leaderboard";
+						GooglePlayServices_SignIn();
+					}
+				} else {
 					BackToMenu();
+				}
 			}
 			if point_in_rectangle(mouse_x,mouse_y,480-room_width/4,0,room_width,INFO_HEIGHT) {
-				if title
-					GooglePlayServices_Achievements_Show();
-				else {
+				if title {
+					if global.hasGooglePlayAccount {
+						GooglePlayServices_Achievements_Show();
+					} else {
+						oLeaderboardAPI.googlePlayQueuedFunction = "Achievements";
+						GooglePlayServices_SignIn();
+					}
+				} else {
 					GameStart(false);
 				}
 			}

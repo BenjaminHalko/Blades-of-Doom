@@ -36,7 +36,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.2.1.75",
+    "IDEVersion": "2023.6.0.89",
   },
   "resources": [
     {"id":{"name":"snSawDestroy","path":"sounds/snSawDestroy/snSawDestroy.yy",},},
@@ -59,7 +59,6 @@
     {"id":{"name":"sHeartPickup","path":"sprites/sHeartPickup/sHeartPickup.yy",},},
     {"id":{"name":"oSpikeManager","path":"objects/oSpikeManager/oSpikeManager.yy",},},
     {"id":{"name":"sSpike","path":"sprites/sSpike/sSpike.yy",},},
-    {"id":{"name":"GooglePlayServices","path":"extensions/GooglePlayServices/GooglePlayServices.yy",},},
     {"id":{"name":"sSparkle2","path":"sprites/sSparkle2/sSparkle2.yy",},},
     {"id":{"name":"oSlowExplode","path":"objects/oSlowExplode/oSlowExplode.yy",},},
     {"id":{"name":"LeaderboardAPI","path":"scripts/LeaderboardAPI/LeaderboardAPI.yy",},},
@@ -89,6 +88,7 @@
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"sPlatform","path":"sprites/sPlatform/sPlatform.yy",},},
     {"id":{"name":"oSpikeDestroy","path":"objects/oSpikeDestroy/oSpikeDestroy.yy",},},
+    {"id":{"name":"GooglePlayServices","path":"extensions/GooglePlayServices/GooglePlayServices.yy",},},
     {"id":{"name":"sLogo","path":"sprites/sLogo/sLogo.yy",},},
     {"id":{"name":"oPlatform","path":"objects/oPlatform/oPlatform.yy",},},
     {"id":{"name":"shBlur","path":"shaders/shBlur/shBlur.yy",},},

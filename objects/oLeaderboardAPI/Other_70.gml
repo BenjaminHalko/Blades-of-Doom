@@ -32,11 +32,39 @@ if(async_load[?"type"] == "GooglePlayServices_Leaderboard_LoadPlayerCenteredScor
 				ini_close();
 			}
 			currentRank = string(_data[0].rank);
-			if (currentRank % 10 == 1 and currentRank != 11) currentRank += "st";
-			else if (currentRank % 10 == 2 and currentRank != 11) currentRank += "nd";
-			else if (currentRank % 10 == 3 and currentRank != 11) currentRank += "rd";
+			if (_data[0].rank % 10 == 1 and _data[0].rank != 11) currentRank += "st";
+			else if (_data[0].rank % 10 == 2 and _data[0].rank != 11) currentRank += "nd";
+			else if (_data[0].rank % 10 == 3 and _data[0].rank != 11) currentRank += "rd";
 			else currentRank += "th";
 			currentRank += " Place";
+		}
+	}
+}
+
+if(async_load[? "type"] == "GooglePlayServices_IsAuthenticated") {
+	if(async_load[?"success"]) {
+		if(async_load[?"isAuthenticated"]) {
+			global.hasGooglePlayAccount = true;
+			GooglePlayServices_Player_Current();
+		} else if askForSignIn {
+			ini_open(SAVEFILE);
+			ini_write_real("settings","askForSignIn",false);
+			ini_close();
+			GooglePlayServices_SignIn();
+		}
+	}
+}
+
+if(async_load[?"type"] == "GooglePlayServices_SignIn") {
+	if(async_load[?"success"]) {
+		if(async_load[?"isAuthenticated"]) {
+			global.hasGooglePlayAccount = true;
+			GooglePlayServices_Player_Current();
+			if googlePlayQueuedFunction == "Leaderboard"
+				GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);
+			else if googlePlayQueuedFunction == "Achievements"
+				GooglePlayServices_Achievements_Show();
+			googlePlayQueuedFunction = undefined;
 		}
 	}
 }

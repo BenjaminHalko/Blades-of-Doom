@@ -6,6 +6,8 @@ maxScores = 5;
 scores = [];
 username = "";
 
+googlePlayQueuedFunction = undefined;
+
 if global.online {
 	if OPERA {
 		try {
@@ -34,7 +36,7 @@ if global.online {
 			show_debug_message(_error);
 		}
 	} else if (GOOGLEPLAY) {
-		GooglePlayServices_Player_Current();
+		GooglePlayServices_IsAuthenticated();
 		GooglePlayServices_Leaderboard_LoadTopScores(GOOGLEPLAYLEADERBOARDID,Leaderboard_TIME_SPAN_ALL_TIME, Leaderboard_COLLECTION_PUBLIC, 5, true);
 	} else LeaderboardGet(maxScores,false,LEADERBOARDID);
 }
@@ -49,13 +51,16 @@ flash = 0;
 scores = [];
 personalBest = 0;
 currentRank = "";
+askForSignIn = true;
 if !file_exists(SAVEFILE) {
 	ini_open(SAVEFILE);
 	ini_write_real("score","score",0);
+	ini_write_real("settings","askForSignIn",true);
 	ini_close();
 } else {
 	ini_open(SAVEFILE);
 	personalBest = ini_read_real("score","score",0);
+	askForSignIn = ini_read_real("settings","askForSignIn",true);
 	ini_close();
 }
 
