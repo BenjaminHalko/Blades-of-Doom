@@ -30,9 +30,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Render","folderPath":"folders/Global/Render.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"SoundFXs","folderPath":"folders/SoundFXs.yy",},
   ],
-  "IncludedFiles": [
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Google Play Services Extension.html","CopyToMask":0,"filePath":"datafiles",},
-  ],
+  "IncludedFiles": [],
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {

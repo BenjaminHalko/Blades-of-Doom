@@ -52,7 +52,7 @@ if displayPercent > 0.9 and mouse_check_button_pressed(mb_left) and point_in_rec
 	if global.hasGooglePlayAccount {
 		GooglePlayServices_Leaderboard_Show(GOOGLEPLAYLEADERBOARDID);
 	} else {
-		oLeaderboardAPI.googlePlayQueuedFunction = "Leaderboard";
+		googlePlayQueuedFunction = "Leaderboard";
 		GooglePlayServices_SignIn();
 	}
 }
