@@ -3,7 +3,12 @@
 if displayPercent == 0 exit;
 
 var _extraSize = 0;
-if(OUTSIDELEADERBOARD and global.online) _extraSize = 20;
+if(OUTSIDELEADERBOARD and global.online) {
+	_extraSize = 0;
+	for(var i = 0; i < array_length(scores); i++) {
+		_extraSize = max(_extraSize,string_width(scores[i].name)-81);
+	}
+}
 
 var _y = 50+40*(!global.online)-10*(global.online and MOBILE);
 var _x = lerp(-220-_extraSize,20,displayPercent);
@@ -48,12 +53,7 @@ if global.online {
 			draw_text(_x+100,_y+40+16*i,string(floor(oGameManager.time div 60))+":"+string_replace(string_format(oGameManager.time % 60,2,2)," ","0"));
 		} else {
 			draw_set_color(username == scores[i].name ? c_yellow : c_white);
-			if (OUTSIDELEADERBOARD) {
-				var _scale = min(1,string_width("AAAAAAAAAAAAA")/string_width(scores[i].name));
-				draw_text_transformed(_x+10,_y+40+16*i,scores[i].name,_scale,1,0);
-			} else {
-				draw_text(_x+10,_y+40+16*i,scores[i].name);
-			}
+			draw_text(_x+10,_y+40+16*i,scores[i].name);
 			draw_set_color(c_white);
 			var _score = variable_struct_get(scores[i],"score");
 			draw_text(_x+100+_extraSize,_y+40+16*i,string(floor(_score div 60))+":"+string_replace(string_format(_score % 60,2,2)," ","0"));
@@ -80,7 +80,7 @@ if newRecord {
 	else draw_text(_x+10,_y+144,"NEW PB!");
 }
 
-if !MOBILE and false {
+if !MOBILE {
 	draw_set_color(c_gray);
 	draw_text(_x+40+_extraSize/2,_y+174,"PRESS ENTER");
 }
