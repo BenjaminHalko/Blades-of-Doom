@@ -1,26 +1,12 @@
 /// @desc Get the current leaderboards
-/// @param {real} numberOfScores
-/// @param {bool} ascending
-/// @param {string} challengeID
-/// @param {function} callback
-function LeaderboardGet(_scores,_ascend,_challengeID) {
-	var _url = "https://lb.userdefined.io/games/"+_challengeID+"?page=1&pagesize="+string(_scores);
-	if (_ascend) _url += "&asc=true";
-	oLeaderboardAPI.httpID = http_get(_url);
+function LeaderboardGet() {
+	FirebaseRealTime("https://"+LEADERBOARDURL+"/").Path(LEADERBOARDID).Read();
 }
 
 /// @desc Post a score to the leaderboards
-/// @param {real} score
-/// @param {string} name
-/// @param {string} challengeID
-function LeaderboardPost(_score,_name,_challengeID) {
-	var _data = {
-		name: _name,
-		game: _challengeID
-	};
-	variable_struct_set(_data,"score",_score);
-	var _header = ds_map_create();
-	_header[? "Content-Type"] = "application/json";
-	http_request("https://lb.userdefined.io/games/submit","POST",_header,json_stringify(_data));
-	ds_map_destroy(_header);
+/// @param score
+function LeaderboardPost(_score) {
+	var _timestamp = string(floor(date_second_span(date_create_datetime(1970, 1, 1, 0, 0, 0),date_current_datetime())));
+	FirebaseRealTime("https://"+LEADERBOARDURL+"/").Path(LEADERBOARDID+"/"+_timestamp+"/name").Set(_score.name);
+	FirebaseRealTime("https://"+LEADERBOARDURL+"/").Path(LEADERBOARDID+"/"+_timestamp+"/score").Set(_score.score);
 }

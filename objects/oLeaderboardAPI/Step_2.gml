@@ -15,7 +15,7 @@ if waiting == 0 and oGameManager.gameOver {
 		if MOBILE and mouse_check_button_pressed(mb_left) and !oGlobalController.leftScreen keyboard_virtual_show(kbv_type_ascii,kbv_returnkey_done,kbv_autocapitalize_words,true);
 		if keyboard_check_pressed(vk_enter) or _gamepadEnter or oGlobalController.jumpIsPressed {
 			if string_replace_all(scores[replacingScore].name," ","") != "" {
-				LeaderboardPost(variable_struct_get(scores[replacingScore],"score"),scores[replacingScore].name,LEADERBOARDID);
+				LeaderboardPost(scores[replacingScore]);
 				replacingScore = -1;
 				GameStart(oGameManager.players[1] != noone);
 				waiting = 30;

@@ -38,7 +38,7 @@ if global.online {
 	} else if (GOOGLEPLAY) {
 		GooglePlayServices_IsAuthenticated();
 		GooglePlayServices_Leaderboard_LoadTopScores(GOOGLEPLAYLEADERBOARDID,Leaderboard_TIME_SPAN_ALL_TIME, Leaderboard_COLLECTION_PUBLIC, 5, true);
-	} else LeaderboardGet(maxScores,false,LEADERBOARDID);
+	} else LeaderboardGet();
 }
 
 waiting = 0;

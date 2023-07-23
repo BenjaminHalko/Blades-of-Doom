@@ -8,8 +8,9 @@ randomize();
 #macro PLATFORM_DIST 80
 #macro SPIKE_DIST 12
 #macro INFO_HEIGHT 26
-#macro LEADERBOARDID "1gsGigOfdp5eCKiv8xB1"
-#macro Deluxe:LEADERBOARDID "QTRoPI4wjb8kmlgoYEqU"
+#macro LEADERBOARDURL "blades-of-doom-77533778-default-rtdb.firebaseio.com"
+#macro LEADERBOARDID "normal"
+#macro Deluxe:LEADERBOARDID "deluxe"
 #macro CHALLENGEID "c159bba5-6093-46e2-a63c-e989b825dbd5"
 #macro SAVEFILE "save.ini"
 #macro GOOGLEPLAYLEADERBOARDID "CgkIlMeFs6UJEAIQCw"
@@ -17,7 +18,6 @@ randomize();
 #macro PLATFORM_SPACING 1.05
 #macro GLOBALSPD (1-(oGameManager.slowTimer > 0)*0.5)
 #macro GLOBALSPIN (1-(oGameManager.slowTimer > 0)*0.75)
-
 
 // Game Version
 enum OS {
@@ -49,7 +49,7 @@ if OPERA {
 	ds_map_destroy(_info);
 }
 
-global.online = (OUTSIDELEADERBOARD or network_resolve("lb.userdefined.io") != "");
+global.online = (OUTSIDELEADERBOARD or network_resolve(LEADERBOARDURL) != "");
 
 // Rendering
 global.resW = 480;
