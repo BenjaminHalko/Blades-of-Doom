@@ -80,8 +80,8 @@ if (async_load[? "type"] == "FirebaseRealTime_Read") {
 			for(var i = 0; i < array_length(_names); i++) {
 				scores[i] = variable_struct_get(_value,_names[i]);
 			}
-		
-			array_sort(scores, function(_ele1,_ele2){return _ele2.value - _ele1.value});
+			
+			array_sort(scores, function(_ele1,_ele2){return _ele2.score - _ele1.score});
 			if array_length(scores) > 5 array_resize(scores,5);
 		}
 	}

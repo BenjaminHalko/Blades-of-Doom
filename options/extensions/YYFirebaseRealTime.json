@@ -9,6 +9,9 @@
     "46eaed75-d17c-40ba-8878-4d9319d09378": {
       "Default": {
         "value": "SDKs_When_Available"
+      },
+      "Deluxe": {
+        "value": "SDKs_When_Available"
       }
     }
   },
