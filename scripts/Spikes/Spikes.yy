@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Spikes",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Common",
-    "path": "folders/Common.yy",
+  "$GMScript":"v1",
+  "%Name":"Spikes",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Spikes",
+  "parent":{
+    "name":"Common",
+    "path":"folders/Common.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

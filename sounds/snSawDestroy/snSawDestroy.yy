@@ -1,26 +1,30 @@
 {
-  "resourceType": "GMSound",
-  "resourceVersion": "1.0",
-  "name": "snSawDestroy",
-  "audioGroupId": {
-    "name": "agUnused",
-    "path": "audiogroups/agUnused",
+  "$GMSound":"",
+  "%Name":"snSawDestroy",
+  "audioGroupId":{
+    "name":"agUnused",
+    "path":"audiogroups/agUnused",
   },
-  "bitDepth": 1,
-  "bitRate": 128,
-  "compression": 0,
-  "ConfigValues": {
-    "Deluxe": {"audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",},
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "ConfigValues":{
+    "Deluxe":{
+      "audioGroupId":"{\"name\":\"audiogroup_default\",\"path\":\"audiogroups/audiogroup_default\"}",
+    },
   },
-  "conversionMode": 0,
-  "duration": 0.297438,
-  "parent": {
-    "name": "SoundFXs",
-    "path": "folders/SoundFXs.yy",
+  "conversionMode":0,
+  "duration":0.297438,
+  "name":"snSawDestroy",
+  "parent":{
+    "name":"SoundFXs",
+    "path":"folders/SoundFXs.yy",
   },
-  "preload": false,
-  "sampleRate": 44100,
-  "soundFile": "snSawDestroy.wav",
-  "type": 0,
-  "volume": 0.7,
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snSawDestroy.wav",
+  "type":0,
+  "volume":0.7,
 }

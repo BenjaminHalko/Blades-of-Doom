@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "BrowerResize",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+  "$GMScript":"v1",
+  "%Name":"BrowerResize",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BrowerResize",
+  "parent":{
+    "name":"Global",
+    "path":"folders/Global.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

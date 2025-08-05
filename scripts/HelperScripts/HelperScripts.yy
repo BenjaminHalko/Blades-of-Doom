@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "HelperScripts",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Global",
-    "path": "folders/Global.yy",
+  "$GMScript":"v1",
+  "%Name":"HelperScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"HelperScripts",
+  "parent":{
+    "name":"Global",
+    "path":"folders/Global.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -1,3 +1,5 @@
 scripts/GMLive*
 datafiles/GMLive/
 Build/
+*.resource_order
+*.old
